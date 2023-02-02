@@ -1,4 +1,3 @@
-<footer>
 <!-- jquery js -->
 <script src="js/plugins/jquery.min.js"></script>
 <!-- smooth scroll js -->
@@ -19,4 +18,3 @@
 <script src="js/plugins/fancybox.min.js"></script>
 <!-- starbelly js -->
 <script src="js/main.js"></script>
-</footer>
