@@ -1,16 +1,15 @@
 <footer>
     <div class="container">
         <div class="sb-footer-frame">
-            <a href="home-1.html" class="sb-logo-frame">
-                <!-- logo img -->
-                <img src="img/ui/logo.svg" alt="Starbelly">
-            </a>
+            <div class="sb-copy">Copyright more&more &copy; 2023. All Rights Reserved.</div>
             <ul class="sb-social">
                 <li><a href="#."><i class="fab fa-facebook"></i></a></li>
-                <li><a href="#."><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/moreandmore_kw/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </li>
                 <li><a href="#."><i class="fab fa-snapchat"></i></a></li>
             </ul>
-            <div class="sb-copy">&copy; late 2023 more & more. All Rights Reserved.</div>
+            <div class="sb-copy">Powerd By <a href={{url('https://www.threedigitsoftware.com/')}} target="_blank">Three
+                    Digit Software</a></div>
         </div>
     </div>
 
