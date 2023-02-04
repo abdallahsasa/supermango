@@ -8,7 +8,7 @@
                 </li>
                 <li><a href="#."><i class="fab fa-snapchat"></i></a></li>
             </ul>
-            <div class="sb-copy">Powerd By <a href={{url('https://www.threedigitsoftware.com/')}} target="_blank">Three
+            <div class="sb-copy">Powered By <a href={{url('https://www.threedigitsoftware.com/')}} target="_blank">Three
                     Digit Software</a></div>
         </div>
     </div>

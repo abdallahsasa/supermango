@@ -8,7 +8,7 @@
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#F5C332">
     <!-- favicon  -->
-    <link rel="shortcut icon" href="img/ui/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/ui/logo.png" type="image/x-icon">
     <!-- font awesome css -->
     <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
     <!-- bootstrap css -->
