@@ -5,19 +5,15 @@
         <div class="sb-top-bar">
             <a href="{{url('/')}}" class="sb-logo-frame">
                 <!-- logo img -->
-                <img src="img/ui/logo.png" alt="Starbelly">
+                <img src="{{asset('img/ui/logo.png')}}" alt="Starbelly">
             </a>
             <!-- menu -->
-            <div class="sb-right-side">
+            <div class="sb-right-side" style="display: none;">
                 <nav id="sb-dynamic-menu" class="sb-menu-transition">
                     <ul class="sb-navigation">
-                        <li class="sb-has-children">
+                        <li>
                             <a href="{{url('/')}}">Home</a>
                         </li>
-                        <li class="sb-has-children">
-                            <a href="">About us</a>
-                        </li>
-
                         <li>
                             <a href="{{url('/contact')}}">Contact</a>
                         </li>

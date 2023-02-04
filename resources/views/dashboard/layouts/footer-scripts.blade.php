@@ -2,40 +2,40 @@
  jquery -->
 
 <!-- jquery -->
-<script src="dashboard/js/jquery-3.6.0.min.js"></script>
+<script src="{{asset('dashboard/js/jquery-3.6.0.min.js')}}"></script>
 
 <!-- plugins-jquery -->
-<script src="dashboard/js/plugins-jquery.js"></script>
+<script src="{{asset('dashboard/js/plugins-jquery.js')}}"></script>
 
 <!-- plugin_path -->
-<script>var plugin_path = 'dashboard/js/';</script>
+<script>var plugin_path = '/dashboard/js/';</script>
 
 <!-- chart -->
-<script src="dashboard/js/chart-init.js"></script>
+<script src="{{asset('dashboard/js/chart-init.js')}}"></script>
 
 <!-- calendar -->
-<script src="dashboard/js/calendar.init.js"></script>
+<script src="{{asset('dashboard/js/calendar.init.js')}}"></script>
 
 <!-- charts sparkline -->
-<script src="dashboard/js/sparkline.init.js"></script>
+<script src="{{asset('dashboard/js/sparkline.init.js')}}"></script>
 
 <!-- charts morris -->
-<script src="dashboard/js/morris.init.js"></script>
+<script src="{{asset('dashboard/js/morris.init.js')}}"></script>
 
 <!-- datepicker -->
-<script src="dashboard/js/datepicker.js"></script>
+<script src="{{asset('dashboard/js/datepicker.js')}}"></script>
 
 <!-- sweetalert2 -->
-<script src="dashboard/js/sweetalert2.js"></script>
+<script src="{{asset('dashboard/js/sweetalert2.js')}}"></script>
 
 <!-- toastr -->
-<script src="dashboard/js/toastr.js"></script>
+<script src="{{asset('dashboard/js/toastr.js')}}"></script>
 
 <!-- validation -->
-<script src="dashboard/js/validation.js"></script>
+<script src="{{asset('dashboard/js/validation.js')}}"></script>
 
 <!-- lobilist -->
-<script src="dashboard/js/lobilist.js"></script>
+<script src="{{asset('dashboard/js/lobilist.js')}}"></script>
 
 <!-- custom -->
-<script src="dashboard/js/custom.js"></script>
+<script src="{{asset('dashboard/js/custom.js')}}"></script>

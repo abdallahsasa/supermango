@@ -8,21 +8,21 @@
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#F5C332">
     <!-- favicon  -->
-    <link rel="shortcut icon" href="img/ui/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('img/ui/logo.png')}}" type="image/x-icon">
     <!-- font awesome css -->
-    <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('css/plugins/font-awesome.min.css')}}">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/plugins/bootstrap.min.css')}}">
     <!-- swiper css -->
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="{{asset('css/plugins/swiper.min.css')}}">
     <!-- datepicker css -->
-    <link rel="stylesheet" href="css/plugins/datepicker.css">
+    <link rel="stylesheet" href="{{asset('css/plugins/datepicker.css')}}">
     <!-- mapbox css -->
-    <link href="css/plugins/mapbox-style.css" rel='stylesheet'>
+    <link href="{{asset('css/plugins/mapbox-style.css')}}" rel='stylesheet'>
     <!-- fancybox css -->
-    <link rel="stylesheet" href="css/plugins/fancybox.min.css">
+    <link rel="stylesheet" href="{{asset('css/plugins/fancybox.min.css')}}">
     <!-- starbelly css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- page title -->
     <title>More & More</title>
 </head>
