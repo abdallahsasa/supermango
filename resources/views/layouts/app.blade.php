@@ -48,7 +48,7 @@
 <div class="sb-load"></div>
 
 
-@extends('layouts.menu_bar')
+@extends('layouts.header')
 @yield('content')
 </body>
 @extends('layouts.footer')

@@ -23,3 +23,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
+
+
+//Dashboard Routes
+
+Route::get('/backoffice', function () {
+    return view('dashboard.index');
+});
