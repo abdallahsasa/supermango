@@ -15,17 +15,19 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
             $table->integer('stock_quantity')->default('0');
             $table->double('unit_price',8,2)->nullable();
             $table->double('unit_discount_price',8,2)->nullable();
             $table->double('wholesale_price',8,2)->nullable();
             $table->double('wholesale_discount_price',8,2)->nullable();
-            $table->integer('min_wholesale_count')->nullable();
+            $table->integer('max_wholesale_count')->nullable();
             $table->double('quantity_base_price',8,2)->nullable();
             $table->integer('min_quantity_count')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
-            $table->enum('stock_status',['in','out']);
+            $table->enum('stock_status',['in','out'])->default('in');
             $table->enum('type',['simple','variant'])->default('simple');
             $table->integer('variant_root_id')->nullable();
             $table->enum('currency',['USD','KD'])->default('KD');
