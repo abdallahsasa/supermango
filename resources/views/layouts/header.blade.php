@@ -5,10 +5,10 @@
         <div class="sb-top-bar">
             <a href="{{url('/')}}" class="sb-logo-frame">
                 <!-- logo img -->
-                <img src="{{asset('img/ui/logo.png')}}" alt="Starbelly">
+                <img src="{{asset('img/ui/logo.png')}}" alt="More & More">
             </a>
             <!-- menu -->
-            <div class="sb-right-side" style="display: none;">
+            <div class="sb-right-side">
                 <nav id="sb-dynamic-menu" class="sb-menu-transition">
                     <ul class="sb-navigation">
                         <li>

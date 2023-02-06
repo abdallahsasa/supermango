@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\CategoryController;
+use \App\Http\Controllers\ProductController;
+use \App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,11 +25,25 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-
-
-
 //Dashboard Routes
-
 Route::get('/backoffice', function () {
     return view('dashboard.index');
 });
+
+//------------- categories -------------
+Route::get('/categories/index', [CategoryController::class, 'index']);
+Route::get('/categories/create', [CategoryController::class, 'create']);
+
+//------------- End categories -------------
+
+
+//------------- Products -------------
+Route::get('/products/index', [ProductController::class, 'index']);
+Route::get('/products/create', [ProductController::class, 'create']);
+//------------- End Products -------------
+
+
+//------------- Message -------------
+Route::get('/message/index', [MessageController::class, 'index']);
+Route::get('/message/create', [MessageController::class, 'create']);
+//------------- End Message -------------

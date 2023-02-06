@@ -17,7 +17,7 @@
                 <div class="sb-main-title">
                   <span class="sb-suptitle sb-mb-30">Contact</span>
                   <h1 class="sb-mb-30">Get in <span>Touch with More & More</span></h1>
-                  <p class="sb-text sb-text-lg sb-mb-30">We will respond withing 24 hours.</p>
+                  <p class="sb-text sb-text-lg sb-mb-30">We will respond within 24 hours.</p>
                   <ul class="sb-breadcrumbs">
                     <li><a href="home-1.html">Home</a></li>
                     <li><a href="menu-1.html">Contact</a></li>
@@ -44,6 +44,11 @@
                         <span class="sb-bar"></span>
                         <label>Name</label>
                       </div>
+                        <div class="sb-group-input">
+                            <input type="text" name="number" required>
+                            <span class="sb-bar"></span>
+                            <label>Phone Number</label>
+                        </div>
                       <div class="sb-group-input">
                         <input type="email" name="email" required>
                         <span class="sb-bar"></span>
