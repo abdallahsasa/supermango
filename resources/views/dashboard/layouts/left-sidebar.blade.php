@@ -16,8 +16,8 @@
                     <div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div>
                 </a>
                 <ul id="categories-menu" class="collapse" data-bs-parent="#sidebarnav">
-                    <li><a href="{{url('/categories/index')}}">Brows All Categories</a></li>
-                    <li><a href="{{url('/categories/create')}}">Add New Category</a></li>
+                    <li><a href="{{url('/backoffice/categories/index')}}">Brows All Categories</a></li>
+                    <li><a href="{{url('/backoffice/categories/create')}}">Add New Category</a></li>
                 </ul>
             </li>
 
@@ -27,8 +27,8 @@
                     <div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div>
                 </a>
                 <ul id="products-menu" class="collapse" data-bs-parent="#sidebarnav">
-                    <li> <a href="{{url('/products/index')}}">Brows All Products</a> </li>
-                    <li> <a href="{{url('/products/create')}}">Add New Product </a> </li>
+                    <li> <a href="{{url('/backoffice/products/index')}}">Brows All Products</a> </li>
+                    <li> <a href="{{url('/backoffice/products/create')}}">Add New Product </a> </li>
                 </ul>
             </li>
 
@@ -48,8 +48,8 @@
                     <div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div>
                 </a>
                 <ul id="contact-menu" class="collapse" data-bs-parent="#sidebarnav">
-                    <li> <a href="{{url('/message/index')}}">Requested Messages</a> </li>
-                    <li> <a href="{{url('/message/create')}}">Contact Information </a> </li>
+                    <li> <a href="{{url('/backoffice/message/index')}}">Requested Messages</a> </li>
+                    <li> <a href="{{url('/backoffice/message/create')}}">Contact Information </a> </li>
                 </ul>
             </li>
 

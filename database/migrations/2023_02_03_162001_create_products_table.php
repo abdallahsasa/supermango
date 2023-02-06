@@ -13,13 +13,23 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->longText('description');
-            $table->double('price');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->enum('active',[1,0]);
+            $table->text('description')->nullable();
+            $table->integer('stock_quantity')->default('0');
+            $table->double('unit_price',8,2)->nullable();
+            $table->double('unit_discount_price',8,2)->nullable();
+            $table->double('wholesale_price',8,2)->nullable();
+            $table->double('wholesale_discount_price',8,2)->nullable();
+            $table->integer('min_wholesale_count')->nullable();
+            $table->double('quantity_base_price',8,2)->nullable();
+            $table->integer('min_quantity_count')->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
+            $table->enum('stock_status',['in','out']);
+            $table->enum('type',['simple','variant'])->default('simple');
+            $table->integer('variant_root_id')->nullable();
+            $table->enum('currency',['USD','KD'])->default('KD');
+
             $table->timestamps();
         });
     }

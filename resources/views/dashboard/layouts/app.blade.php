@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@extends('dashboard.layouts.head')
+@include('dashboard.layouts.head')
 <body>
 
 <div class="wrapper">

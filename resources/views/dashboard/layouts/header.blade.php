@@ -1,8 +1,8 @@
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-start navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="{{asset('dashboard/images/logo-dark.png')}}" alt="" ></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('dashboard/images/logo-icon-dark.png')}}" alt=""></a>
+        <a class="navbar-brand brand-logo" href="/backoffice/dashboard"><img src="{{asset('/img/ui/logo.png')}}" alt="" >Admin Panel</a>
+        <a class="navbar-brand brand-logo-mini" href="/backoffice/dashboard"><img src="{{asset('/img/ui/logo.png')}}" alt="">Admin Panel</a>
     </div>
     <!-- Top bar left -->
     <ul class="nav navbar-nav me-auto">

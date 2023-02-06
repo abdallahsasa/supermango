@@ -15,6 +15,15 @@ use \App\Http\Controllers\MessageController;
 |
 */
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
 Route::get('/', function () {
     return view('index');
 });
@@ -24,26 +33,29 @@ Route::get('/soon', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/backoffice', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 //Dashboard Routes
-Route::get('/backoffice', function () {
+Route::group( [ 'prefix' => 'backoffice','middleware' => ['auth','verified'] ], function() {
+
+Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
 //------------- categories -------------
 Route::get('/categories/index', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create']);
-
 //------------- End categories -------------
-
 
 //------------- Products -------------
 Route::get('/products/index', [ProductController::class, 'index']);
 Route::get('/products/create', [ProductController::class, 'create']);
 //------------- End Products -------------
 
-
 //------------- Message -------------
 Route::get('/message/index', [MessageController::class, 'index']);
 Route::get('/message/create', [MessageController::class, 'create']);
 //------------- End Message -------------
+});
