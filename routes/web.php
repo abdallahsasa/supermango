@@ -34,7 +34,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/backoffice', function () {
-    return view('dashboard');
+    return view('dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Dashboard Routes
