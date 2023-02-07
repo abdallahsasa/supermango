@@ -1,7 +1,18 @@
 @extends('layouts.app')
 @section('content')
+
     <!-- app wrapper -->
     <div class="sb-app">
+        @if(session()->get('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+        @if(session()->get('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session()->get('success') }}
+            </div>
+        @endif
 
         <!-- dynamic content -->
         <div id="sb-dynamic-content" class="sb-transition-fade">
@@ -43,21 +54,41 @@
                                                 <input type="text" name="name" required>
                                                 <span class="sb-bar"></span>
                                                 <label>Name</label>
+                                                @if($errors->has('name'))
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ $errors->first('name') }}
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="sb-group-input">
                                                 <input type="text" name="number" required>
                                                 <span class="sb-bar"></span>
                                                 <label>Phone Number</label>
+                                                @if($errors->has('number'))
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ $errors->first('number') }}
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="sb-group-input">
                                                 <input type="email" name="email" required>
                                                 <span class="sb-bar"></span>
                                                 <label>Email</label>
+                                                @if($errors->has('email'))
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ $errors->first('email') }}
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="sb-group-input">
                                                 <textarea name="message" required></textarea>
                                                 <span class="sb-bar"></span>
                                                 <label>Message</label>
+                                                @if($errors->has('message'))
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ $errors->first('message') }}
+                                                    </div>
+                                                @endif
                                             </div>
                                             <p class="sb-text sb-text-xs sb-mb-30">*We promise not to disclose your <br>personal
                                                 information to third parties.</p>

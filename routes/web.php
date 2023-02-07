@@ -34,7 +34,7 @@ Route::get('/soon', function () {
 
 
 //------------- Message -------------
-Route::get('/contact', [MessageController::class, 'create']);
+Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
 //------------- End Message -------------
 

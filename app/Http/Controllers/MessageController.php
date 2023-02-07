@@ -42,22 +42,28 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            $request = $request->validate([
+                'name' => 'required|string|min:3|max:200',
+                'email' => 'required|email',
+                'number' => 'required|numeric|digits:10',
+                'message' => 'required',
+            ]);
 
-        $request = $request->validate([
-            'name' => 'required|string|min:3|max:200',
-            'email' => 'required|email',
-            'number' => 'required|numeric|digits:10',
-            'message' => 'required',
-        ]);
+            $message = new Message();
+            $message->name = $request['name'];
+            $message->email = $request['email'];
+            $message->number = $request['number'];
+            $message->message = $request['message'];
 
-        $message = new Message();
-        $message->name = $request['name'];
-        $message->email = $request['email'];
-        $message->number = $request['number'];
-        $message->message = $request['message'];
+            $message->save();
+            return redirect()->back()->with('success', 'Thank You For Contacting Us');
+        }
+        catch (\Exception $ex) {
 
-        $message->save();
-        return redirect()->back()->with('success', 'Thank You For Contacting Us');
+            Log::error($ex->getMessage());
+            return redirect()->back()->with('error', $this->error_message);
+        }
 
     }
 
