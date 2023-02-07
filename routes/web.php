@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\ProductController;
 use \App\Http\Controllers\MessageController;
+use \App\Http\Controllers\WebsiteProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('index');
@@ -30,33 +31,46 @@ Route::get('/', function () {
 Route::get('/soon', function () {
     return view('coming_soon');
 });
-Route::get('/contact', function () {
-    return view('contact');
-});
+
+
+//------------- Message -------------
+Route::get('/contact', [MessageController::class, 'create']);
+Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
+//------------- End Message -------------
+
+
+//---------------------------------------Backoffice----------------------------------------------------
+
 
 Route::get('/backoffice', function () {
     return view('dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Dashboard Routes
-Route::group( [ 'prefix' => 'backoffice','middleware' => ['auth','verified'] ], function() {
+Route::group(['prefix' => 'backoffice', 'middleware' => ['auth', 'verified']], function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    });
 
 //------------- categories -------------
-Route::get('/categories/index', [CategoryController::class, 'index']);
-Route::get('/categories/create', [CategoryController::class, 'create']);
+    Route::get('/categories/index', [CategoryController::class, 'index']);
+    Route::get('/categories/create', [CategoryController::class, 'create']);
 //------------- End categories -------------
 
 //------------- Products -------------
-Route::get('/products/index', [ProductController::class, 'index']);
-Route::get('/products/create', [ProductController::class, 'create']);
+    Route::get('/products/index', [ProductController::class, 'index']);
+    Route::get('/products/create', [ProductController::class, 'create']);
 //------------- End Products -------------
 
+
 //------------- Message -------------
-Route::get('/message/index', [MessageController::class, 'index']);
-Route::get('/message/create', [MessageController::class, 'create']);
+    Route::get('/contact/index', [MessageController::class, 'index'])->name('contact.index');
 //------------- End Message -------------
+
+//------------- Website Profile -------------
+    Route::get('/website-profile/index', [WebsiteProfileController::class, 'create'])->name('website_profile.create');
+    Route::post('/website-profile/index', [WebsiteProfileController::class, 'store'])->name('website_profile.store');
+//------------- End Message -------------
+
 });

@@ -231,16 +231,16 @@ $(function() {
   contact form
 
   ***************************/
-  $("#form").submit(function() {
-    $.ajax({
-      type: "POST",
-      url: "mail.php",
-      data: $(this).serialize()
-    }).done(function() {
-      $('.sb-success-result').addClass('sb-active');
-    });
-    return false;
-  });
+  // $("#form").submit(function() {
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "{{}}",
+  //     data: $(this).serialize()
+  //   }).done(function() {
+  //     $('.sb-success-result').addClass('sb-active');
+  //   });
+  //   return false;
+  // });
   /***************************
 
   sliders
@@ -549,16 +549,16 @@ $(function() {
     contact form
 
     ***************************/
-    $("#form").submit(function() {
-      $.ajax({
-        type: "POST",
-        url: "mail.php",
-        data: $(this).serialize()
-      }).done(function() {
-        $('.sb-success-result').addClass('sb-active');
-      });
-      return false;
-    });
+    // $("#form").submit(function() {
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "mail.php",
+    //     data: $(this).serialize()
+    //   }).done(function() {
+    //     $('.sb-success-result').addClass('sb-active');
+    //   });
+    //   return false;
+    // });
     /***************************
 
     sliders

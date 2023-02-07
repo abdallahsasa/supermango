@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class MessageController extends Controller
 {
@@ -12,36 +14,57 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('dashboard.messages.index');
-    }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        return view('dashboard.messages.create');
+        $messages = Message::all();
+
+        return view('/dashboard.messages.index',compact('messages'));
+    }
+
+    function create()
+    {
+
+        return view('/contact');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+
+        $request = $request->validate([
+            'name' => 'required|string|min:3|max:200',
+            'email' => 'required|email',
+            'number' => 'required|numeric|digits:10',
+            'message' => 'required',
+        ]);
+
+        $message = new Message();
+        $message->name = $request['name'];
+        $message->email = $request['email'];
+        $message->number = $request['number'];
+        $message->message = $request['message'];
+
+        $message->save();
+        return redirect()->back()->with('success', 'Thank You For Contacting Us');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Message  $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
@@ -52,7 +75,7 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Message  $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)
@@ -63,8 +86,8 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Message  $message
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Message $message)
@@ -75,7 +98,7 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Message  $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
     public function destroy(Message $message)
