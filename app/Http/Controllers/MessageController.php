@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +16,22 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
 
+        $this->index_view = 'dashboard.products.index';
+        $this->create_view = 'dashboard.products.create';
+        $this->show_view = 'dashboard.products.show';
+        $this->edit_view = 'dashboard.products.edit';
+        $this->edit_variation_view = 'dashboard.products.edit_variation';
+        $this->index_route = 'dashboard.product.index';
+        $this->create_route = 'product.create';
+        $this->success_message = 'Thank You For Contacting Us Your Message Has Received';
+        $this->update_success_message = trans('admin.update_created_successfully');
+        $this->error_message = "Your Message Couldn't Be Send" ;
+        $this->update_error_message = trans('admin.fail_while_update');
+        $this->model_instance = Message::class;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,22 +58,17 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $request = $request->validate([
+            'name' => 'required|string|min:3|max:200',
+            'email' => 'required|email',
+            'number' => 'required|digits:10',
+            'message' => 'required',
+        ]);
         try {
-            $request = $request->validate([
-                'name' => 'required|string|min:3|max:200',
-                'email' => 'required|email',
-                'number' => 'required|numeric|digits:10',
-                'message' => 'required',
-            ]);
-
-            $message = new Message();
-            $message->name = $request['name'];
-            $message->email = $request['email'];
-            $message->number = $request['number'];
-            $message->message = $request['message'];
-
-            $message->save();
-            return redirect()->back()->with('success', 'Thank You For Contacting Us');
+            $object = $this->model_instance::create($request);
+            $log_message = trans('products.create_log') . '#' . $object->id;
+            //UserActivity::logActivity($log_message);
+            return redirect()->back()->with('success', $this->success_message);
         }
         catch (\Exception $ex) {
 

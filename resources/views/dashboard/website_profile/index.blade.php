@@ -16,24 +16,24 @@
     <div class="card card-statistics mb-30">
         <div class="card-body">
 
-            <form method="POST" action="{{route('website_profile.store')}}">
+            <form method="POST" action="{{route('website_profile.update')}}">
                 @csrf
-
+                @method('PUT')
                 <div class="row">
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer01">Location</label>
                         <input type="text" class="form-control " id="validationServer01"
-                               placeholder="Montréal, 1510 Rue Sauvé" required="" name="location" @ value="{{ $data[0]['location']}}">
+                               placeholder="Montréal, 1510 Rue Sauvé" required="" name="location" @ value="{{ $data->location}}">
                     </div>
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer02">Phone Number</label>
                         <input type="text" class="form-control " id="validationServer02"
-                               placeholder="+02 (044) 756-X6-52" required="" name="number" value="{{$data[0]['number']}}">
+                               placeholder="+02 (044) 756-X6-52" required="" name="number" value="{{$data->number}}">
                     </div>
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer03">Email</label>
                         <input type="email" class="form-control " id="validationServer03"
-                               placeholder="info@moreandmore-kw.com" required="" name="email" value="{{$data[0]['email']}}">
+                               placeholder="info@moreandmore-kw.com" required="" name="email" value="{{$data->email}}">
                     </div>
 
                 </div>
@@ -43,7 +43,7 @@
                         <div class="input-group">
                             <div class="input-group-text">@</div>
                             <input type="text" class="form-control" id="validationServerUsername"
-                                   placeholder="Facebook Username" aria-describedby="inputGroupPrepend3" required="" name="facebook" value="{{$data[0]['facebook']}}">
+                                   placeholder="Facebook Username" aria-describedby="inputGroupPrepend3" required="" name="facebook" value="{{$data->facebook}}">
                         </div>
                     </div>
                     <div class="col-sm-4 col-xl-6 col-xxl-3 mb-3">
@@ -51,7 +51,7 @@
                         <div class="input-group">
                             <div class="input-group-text">@</div>
                             <input type="text" class="form-control" id="validationServer04"
-                                   placeholder="Instagram Username" required="" name="instagram" value="{{$data[0]['instagram']}}">
+                                   placeholder="Instagram Username" required="" name="instagram" value="{{$data->instagram}}">
                         </div>
 
                     </div>
@@ -60,7 +60,7 @@
                         <div class="input-group">
                             <div class="input-group-text">@</div>
                             <input type="text" class="form-control" id="validationServer05" placeholder="Snapchat Username"
-                                   required="" name="snapchat" value="{{$data[0]['snapchat']}}">
+                                   required="" name="snapchat" value="{{$data->snapchat}}">
                         </div>
 
                     </div>

@@ -3,16 +3,7 @@
 
     <!-- app wrapper -->
     <div class="sb-app">
-        @if(session()->get('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-        @if(session()->get('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session()->get('success') }}
-            </div>
-        @endif
+
 
         <!-- dynamic content -->
         <div id="sb-dynamic-content" class="sb-transition-fade">
@@ -22,9 +13,11 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
+
                             <!-- main title -->
                             <div class="sb-main-title-frame">
                                 <div class="sb-main-title">
+
                                     <span class="sb-suptitle sb-mb-30">Contact</span>
                                     <h1 class="sb-mb-30">Get in <span>Touch with More & More</span></h1>
                                     <p class="sb-text sb-text-lg sb-mb-30">We will respond within 24 hours.</p>
@@ -89,7 +82,18 @@
                                                         {{ $errors->first('message') }}
                                                     </div>
                                                 @endif
+
                                             </div>
+                                            @if(session()->get('error'))
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{ session()->get('error') }}
+                                                </div>
+                                            @endif
+                                            @if(session()->get('success'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{ session()->get('success') }}
+                                                </div>
+                                            @endif
                                             <p class="sb-text sb-text-xs sb-mb-30">*We promise not to disclose your <br>personal
                                                 information to third parties.</p>
                                             <!-- button -->

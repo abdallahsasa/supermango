@@ -7,6 +7,22 @@ use Illuminate\Http\Request;
 
 class WebsiteProfileController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->index_view = 'dashboard.products.index';
+        $this->create_view = 'dashboard.products.create';
+        $this->show_view = 'dashboard.products.show';
+        $this->edit_view = 'dashboard.products.edit';
+        $this->edit_variation_view = 'dashboard.products.edit_variation';
+        $this->index_route = 'dashboard.product.index';
+        $this->create_route = 'product.create';
+        $this->success_message = 'Thank You For Contacting Us Your Message Has Received';
+        $this->update_success_message = trans('admin.update_created_successfully');
+        $this->error_message = "Your Message Couldn't Be Send" ;
+        $this->update_error_message = trans('admin.fail_while_update');
+        $this->model_instance = WebsiteProfile::class;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +40,20 @@ class WebsiteProfileController extends Controller
      */
     public function create()
     {
-        $data = WebsiteProfile::all();
+        $data = WebsiteProfile::all()->first();
         if (is_null($data)) {
-            return view('/dashboard.website_profile.index');
+            $validated_data = [
+                'location' => 'location',
+                'email' => 'email',
+                'number' => 'number',
+                'facebook' => 'facebook link',
+                'instagram' => 'instagram link',
+                'snapchat' => 'snapchat user name',
+            ];
 
+            $object = $this->model_instance::create($validated_data);
+            $data=$object;
+            return view('/dashboard.website_profile.index', compact('data'));
         }
 
         return view('/dashboard.website_profile.index', compact('data'));
@@ -39,29 +65,22 @@ class WebsiteProfileController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        $obj = new WebsiteProfile();
-        $obj::truncate();
+        $object= WebsiteProfile::all()->first();
 
-        $request = $request->validate([
+        $validated_data = $request->validate([
             'location' => 'required|string|min:3|max:200',
             'email' => 'required|email',
-            'number' => 'required|numeric|digits:10',
-            'facebook' => '|string|min:3|max:200',
-            'instagram' => '|string|min:3|max:200',
-            'snapchat' => '|string|min:3|max:200',
+            'number' => 'required|digits:10',
+            'facebook' => 'string|min:3|max:200',
+            'instagram' => 'string|min:3|max:200',
+            'snapchat' => 'string|min:3|max:200',
         ]);
+        //dd($validated_data);
+        $object->update($validated_data);
 
-        $obj->location = $request['location'];
-        $obj->email = $request['email'];
-        $obj->number = $request['number'];
-        $obj->facebook = $request['facebook'];
-        $obj->instagram = $request['instagram'];
-        $obj->snapchat = $request['snapchat'];
-
-        $obj->save();
-        return redirect()->back()->with('success', 'Data Have Been Added Successfully');
+        return redirect()->back()->with('success', 'Data Have Been Updated Successfully');
     }
 
     /**
@@ -86,17 +105,6 @@ class WebsiteProfileController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\WebsiteProfile $websiteProfile
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, WebsiteProfile $websiteProfile)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

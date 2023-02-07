@@ -74,7 +74,7 @@ Route::group(['prefix' => 'backoffice'], function () {
 
 //------------- Website Profile -------------
     Route::get('/website-profile/index', [WebsiteProfileController::class, 'create'])->name('website_profile.create');
-    Route::post('/website-profile/index', [WebsiteProfileController::class, 'store'])->name('website_profile.store');
+    Route::put('/website-profile/index', [WebsiteProfileController::class, 'update'])->name('website_profile.update');
 //------------- End Message -------------
 
 });
