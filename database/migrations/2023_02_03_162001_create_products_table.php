@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('sku');
             $table->longText('description')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();

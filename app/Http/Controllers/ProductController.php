@@ -46,19 +46,17 @@ class ProductController extends Controller
         $this->error_message = trans('admin.fail_while_create');
         $this->update_error_message = trans('admin.fail_while_update');
         $this->model_instance = Product::class;
-        $this->model_instance_translation=ProductTranslation::class;
     }
 
     private function StoreValidationRules()
     {
         return [
             'name' => 'required|string|min:3|max:200',
-            'english_name' => 'required|string|min:3|max:200',
             'sku' => 'nullable|string|min:3|max:200',
             'description' => 'nullable|string',
-            'english_description' => 'nullable|string',
-            'made_in' => 'nullable|string',
-            'currency' => 'required|in:IQD,USD,SYP',
+            'meta_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
+            'currency' => 'required|in:KD,USD,SYP',
             'stock_status' => 'required|in:in,out',
             'status' => 'required|in:active,inactive',
             'unit_price' => 'required|numeric',
@@ -110,12 +108,12 @@ class ProductController extends Controller
 
 
         if($filter == "all")
-            $products = $this->model_instance::where(['is_variant' => 'no'])->latest()->get();
+            $products = $this->model_instance::all();
         else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
 
-        $categories = Category::getAssignableCategories();
+        $categories = Category::all();
 
 
         return view($this->index_view, compact(['products','categories','filter']));
@@ -129,9 +127,9 @@ class ProductController extends Controller
     public function create()
     {
 
-        has_access('product_create');
+        //has_access('product_create');
 
-        $categories = Category::getAssignableCategories();
+        $categories = Category::all();
         $attributes = Attribute::all();
         return view($this->create_view,compact(['categories','attributes']));
     }
@@ -145,37 +143,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        has_access('product_create');
+       // has_access('product_create');
         $validated_data = $request->validate($this->StoreValidationRules());
 
         try {
             $object = $this->model_instance::create(Arr::except($validated_data,['categories','english_name','english_description']));
 
-            $name_trans=[
-                'lang'=>'en',
-                'translatable_attribute'=>'name',
-                'value'=>$request->english_name,
-            ];
-            $object->setTranslation($name_trans);
-
-            $desc_trans=[
-                'lang'=>'en',
-                'translatable_attribute'=>'description',
-                'value'=>$request->english_description,
-            ];
-            $object->setTranslation($desc_trans);
-
             if($request->has('categories'))
             {
-
-
                 $object->categories()->sync($request->categories);
             }
-
-
-
-
-
             if($request->has('tags'))
             {
                 $tags = $request->tags;
@@ -191,8 +168,6 @@ class ProductController extends Controller
 
             if($request->has('product_attributes'))
             {
-
-
                 foreach ($request->product_attributes as $id => $values)
                 {
                     $attribute = Attribute::findOrFail($id);
@@ -262,7 +237,7 @@ class ProductController extends Controller
     public function edit($id)
     {
 
-        has_access('product_update');
+        //has_access('product_update');
 
         $product = $this->model_instance::findOrFail($id);
         $attributes = Attribute::all();
@@ -278,7 +253,7 @@ class ProductController extends Controller
 
 
 
-        has_access('product_update');
+       // has_access('product_update');
 
         $product = $this->model_instance::findOrFail($id);
         $attributes = Attribute::all();
@@ -299,7 +274,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
 
-        has_access('product_update');
+        //has_access('product_update');
 
         $validated_data = $request->validate($this->UpdateValidationRules());
 
@@ -492,11 +467,6 @@ class ProductController extends Controller
 
     }
 
-    public function updateVariation(Request $request,$id)
-    {
-
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -506,7 +476,7 @@ class ProductController extends Controller
     public function destroy(Request $request, $id)
     {
 
-        has_access('product_remove');
+       // has_access('product_remove');
 
         if ($request->ajax()) {
             $deleted = $this->model_instance::findOrFail($id)->delete();
