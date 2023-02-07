@@ -47,7 +47,8 @@ Route::get('/backoffice', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Dashboard Routes
-Route::group(['prefix' => 'backoffice', 'middleware' => ['auth', 'verified']], function () {
+//, 'middleware' => ['auth', 'verified']
+Route::group(['prefix' => 'backoffice'], function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard.index');
@@ -59,8 +60,11 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth', 'verified']], f
 //------------- End categories -------------
 
 //------------- Products -------------
-    Route::get('/products/index', [ProductController::class, 'index']);
-    Route::get('/products/create', [ProductController::class, 'create']);
+    Route::get('/products/index', [ProductController::class, 'index'])->name('dashboard.product.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
+    Route::get('/products/edit', [ProductController::class, 'edit'])->name('dashboard.product.edit');
+    Route::post('/products/create', [ProductController::class, 'store'])->name('product.store');
+    Route::put('/products/update', [ProductController::class, 'update'])->name('product.update');
 //------------- End Products -------------
 
 

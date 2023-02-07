@@ -40,7 +40,8 @@ class ProductController extends Controller
         $this->show_view = 'dashboard.products.show';
         $this->edit_view = 'dashboard.products.edit';
         $this->edit_variation_view = 'dashboard.products.edit_variation';
-        $this->index_route = 'dashboard.products.index';
+        $this->index_route = 'dashboard.product.index';
+        $this->create_route = 'product.create';
         $this->success_message = trans('admin.created_successfully');
         $this->update_success_message = trans('admin.update_created_successfully');
         $this->error_message = trans('admin.fail_while_create');
@@ -53,21 +54,9 @@ class ProductController extends Controller
         return [
             'name' => 'required|string|min:3|max:200',
             'sku' => 'nullable|string|min:3|max:200',
-            'description' => 'nullable|string',
-            'meta_title' => 'nullable|string',
-            'meta_description' => 'nullable|string',
-            'currency' => 'required|in:KD,USD,SYP',
-            'stock_status' => 'required|in:in,out',
-            'status' => 'required|in:active,inactive',
-            'unit_price' => 'required|numeric',
-            'unit_discount_price' => 'nullable|numeric',
-            'wholesale_price' => 'nullable|numeric',
-            'wholesale_discount_price' => 'nullable|numeric',
-            'stock_quantity' => 'nullable|numeric',
-            'images' => 'nullable|array',
+            'images' => 'nullable|string',
             'images.*' => 'image|mimes:jpg,jpeg,png',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 
@@ -115,7 +104,6 @@ class ProductController extends Controller
 
         $categories = Category::all();
 
-
         return view($this->index_view, compact(['products','categories','filter']));
     }
 
@@ -128,7 +116,6 @@ class ProductController extends Controller
     {
 
         //has_access('product_create');
-
         $categories = Category::all();
         $attributes = Attribute::all();
         return view($this->create_view,compact(['categories','attributes']));
@@ -142,46 +129,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-       // has_access('product_create');
+        // has_access('product_create');
         $validated_data = $request->validate($this->StoreValidationRules());
-
         try {
-            $object = $this->model_instance::create(Arr::except($validated_data,['categories','english_name','english_description']));
+            $object = $this->model_instance::create($validated_data);
 
-            if($request->has('categories'))
-            {
-                $object->categories()->sync($request->categories);
-            }
-            if($request->has('tags'))
-            {
-                $tags = $request->tags;
-
-                foreach ($tags as $tag)
-                {
-                    Tag::create([
-                        'product_id' => $object->id,
-                        'tag_value' => $tag
-                    ]);
-                }
-            }
-
-            if($request->has('product_attributes'))
-            {
-                foreach ($request->product_attributes as $id => $values)
-                {
-                    $attribute = Attribute::findOrFail($id);
-                    $object->attributes()->attach($attribute->id,['values' => json_encode($values,JSON_UNESCAPED_UNICODE )]);
-                }
-            }
-
-
-
-            if($request->has('images'))
-            {
-
-                foreach ($validated_data["images"] as $image)
-                {
+            if ($request->has('images')) {
+                foreach ($validated_data["images"] as $image) {
                     $img_file_path = Storage::disk('public_images')->put('products', $image);
                     $image_url = getMediaUrl($img_file_path);
                     ProductMedia::create([
@@ -189,14 +143,7 @@ class ProductController extends Controller
                         'media_type' => 'image',
                         'media_url' => $image_url
                     ]);
-
-
                 }
-            }
-
-            if(!$request->has('stock_management'))
-            {
-                $object->stockUnlimited()->update();
             }
 
 
@@ -204,12 +151,11 @@ class ProductController extends Controller
             UserActivity::logActivity($log_message);
 
 
-
-            return redirect()->route($this->edit_view,$object->id)->with('success', $this->success_message);
+            return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
         } catch (\Exception $ex) {
-            //  dd($this->error_message);
+
             Log::error($ex->getMessage());
-            return redirect()->route($this->index_route)->with('error', $this->error_message);
+            return redirect()->route($this->create_route)->with('error', $this->error_message);
         }
 
 

@@ -9,10 +9,10 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'Products';
-    protected $fillable = array('name','description','price','active','image');
+    protected $fillable = array('name','description','price','category_id','sku');
     public function categories()
     {
-        return $this->belongsToMany('App\models\Category');
+        return $this->hasOne('App\models\Category');
     }
 
     public function media()
@@ -49,7 +49,6 @@ class Product extends Model
     {
         return $this->stock_status == "in";
     }
-
 
     public function get_images()
     {
