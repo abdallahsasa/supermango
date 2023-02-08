@@ -6,7 +6,11 @@
             {{ session()->get('error') }}
         </div>
     @endif
-
+    @if(session()->get('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">

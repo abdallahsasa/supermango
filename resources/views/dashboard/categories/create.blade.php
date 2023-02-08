@@ -15,10 +15,20 @@
     </div>
     <div class="row">
         <div class="col-xl-12 mb-30">
+            @if(session()->get('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
+                @if(session()->get('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
             <div class="card card-statistics mb-30">
                 <div class="card-body">
 
-                    <form method="POST" action="{{route('category.store')}}">
+                    <form method="POST" action="{{route('dashboard.category.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Category Name</label>

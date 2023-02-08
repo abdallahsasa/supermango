@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\ProductMedia;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,8 +18,8 @@ class CategoryController extends Controller
         $this->create_view = 'dashboard.categories.create';
         $this->show_view = 'dashboard.categories.show';
         $this->edit_view = 'dashboard.categories.edit';
-        $this->index_route = 'dashboard.categories.index';
-        $this->create_route = 'categories.create';
+        $this->index_route = 'dashboard.category.index';
+        $this->create_route = 'dashboard.category.create';
         $this->success_message = 'Category Has Been Added Successfully';
         $this->update_success_message = trans('admin.update_created_successfully');
         $this->error_message = "Category Couldn't Been Added" ;
@@ -64,15 +65,20 @@ class CategoryController extends Controller
     {
         // has_access('product_create');
         $validated_data = $request->validate($this->StoreValidationRules());
-        try {
-            $object = $this->model_instance::create($validated_data);
 
-            if ($request->has('images')) {
+
+            $object = $this->model_instance::create(Arr::except($validated_data,['image']));
+
+            if ($request->has('image')) {
+
                 $image=$validated_data["image"];
-                    $img_file_path = Storage::disk('public_images')->put('categories', $image);
+                    $img_file_path = Storage::disk('public')->put('categories', $image);
+                dd($request->file('image'));
+                    $image_name=$request->file('image')->getClientOriginalName();
                     $image_url = getMediaUrl($img_file_path);
-                  $object->image_name=$image_url;
-                  $object->image_url=$img_file_path;
+                  $object->image_url=$image_url;
+                  $object->image_name=$image_name;
+
                   $object->save;
             }
 
@@ -80,11 +86,7 @@ class CategoryController extends Controller
             UserActivity::logActivity($log_message);
 
             return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
-        } catch (\Exception $ex) {
 
-            Log::error($ex->getMessage());
-            return redirect()->route($this->create_route)->with('error', $this->error_message);
-        }
     }
 
     /**
