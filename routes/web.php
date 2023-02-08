@@ -57,6 +57,9 @@ Route::group(['prefix' => 'backoffice'], function () {
 //------------- categories -------------
     Route::get('/categories/index', [CategoryController::class, 'index']);
     Route::get('/categories/create', [CategoryController::class, 'create']);
+    Route::get('/categories/edit', [CategoryController::class, 'edit']);
+    Route::post('/categories/create', [CategoryController::class, 'store']);
+    Route::post('/categories/update', [CategoryController::class, 'update']);
 //------------- End categories -------------
 
 //------------- Products -------------
