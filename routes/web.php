@@ -55,11 +55,11 @@ Route::group(['prefix' => 'backoffice'], function () {
     });
 
 //------------- categories -------------
-    Route::get('/categories/index', [CategoryController::class, 'index']);
-    Route::get('/categories/create', [CategoryController::class, 'create']);
-    Route::get('/categories/edit', [CategoryController::class, 'edit']);
-    Route::post('/categories/create', [CategoryController::class, 'store']);
-    Route::post('/categories/update', [CategoryController::class, 'update']);
+    Route::get('/categories/index', [CategoryController::class, 'index'])->name('dashboard.category.index');
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('dashboard.category.create');
+    Route::get('/categories/edit', [CategoryController::class, 'edit'])->name('dashboard.category.edit');
+    Route::post('/categories/create', [CategoryController::class, 'store'])->name('category.store');
+    Route::post('/categories/update', [CategoryController::class, 'update'])->name('category.update');
 //------------- End categories -------------
 
 //------------- Products -------------
