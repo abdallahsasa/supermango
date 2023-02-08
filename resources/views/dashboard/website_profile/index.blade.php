@@ -1,5 +1,10 @@
 @extends('dashboard.layouts.app')
 @section('content')
+    @if(session()->get('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session()->get('error') }}
+        </div>
+    @endif
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">
@@ -23,17 +28,33 @@
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer01">Location</label>
                         <input type="text" class="form-control " id="validationServer01"
-                               placeholder="Montréal, 1510 Rue Sauvé" required="" name="location" @ value="{{ $data->location}}">
+                               placeholder="Montréal, 1510 Rue Sauvé" required="" name="location" @
+                               value="{{ $data->location}}">
+                        @if($errors->has('location'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('location') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer02">Phone Number</label>
                         <input type="text" class="form-control " id="validationServer02"
                                placeholder="+02 (044) 756-X6-52" required="" name="number" value="{{$data->number}}">
+                        @if($errors->has('number'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('number') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-4 col-xl-12 col-xxl-4 mb-3">
                         <label class="form-label" for="validationServer03">Email</label>
                         <input type="email" class="form-control " id="validationServer03"
                                placeholder="info@moreandmore-kw.com" required="" name="email" value="{{$data->email}}">
+                        @if($errors->has('email'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
                     </div>
 
                 </div>
@@ -43,26 +64,42 @@
                         <div class="input-group">
                             <div class="input-group-text">@</div>
                             <input type="text" class="form-control" id="validationServerUsername"
-                                   placeholder="Facebook Username" aria-describedby="inputGroupPrepend3" required="" name="facebook" value="{{$data->facebook}}">
+                                   placeholder="Facebook Username" aria-describedby="inputGroupPrepend3" required=""
+                                   name="facebook" value="{{$data->facebook}}">
                         </div>
+                        @if($errors->has('facebook'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('facebook') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-4 col-xl-6 col-xxl-3 mb-3">
                         <label class="form-label" for="validationServer04">Instagram Username</label>
                         <div class="input-group">
                             <div class="input-group-text">@</div>
                             <input type="text" class="form-control" id="validationServer04"
-                                   placeholder="Instagram Username" required="" name="instagram" value="{{$data->instagram}}">
+                                   placeholder="Instagram Username" required="" name="instagram"
+                                   value="{{$data->instagram}}">
                         </div>
-
+                        @if($errors->has('instagram'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('instagram') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-4 col-xl-6 col-xxl-3 mb-3">
                         <label class="form-label" for="validationServer05">Snapchat Username</label>
                         <div class="input-group">
                             <div class="input-group-text">@</div>
-                            <input type="text" class="form-control" id="validationServer05" placeholder="Snapchat Username"
+                            <input type="text" class="form-control" id="validationServer05"
+                                   placeholder="Snapchat Username"
                                    required="" name="snapchat" value="{{$data->snapchat}}">
                         </div>
-
+                        @if($errors->has('snapchat'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('snapchat') }}
+                            </div>
+                        @endif
                     </div>
 
                 </div>
