@@ -24,7 +24,7 @@
         <li class="nav-item fullscreen">
             <a id="btnFullscreen" href="#" class="nav-link" ><i class="ti-fullscreen"></i></a>
         </li>
-        <li class="nav-item dropdown ">
+        <li style="display: none;" class="nav-item dropdown ">
             <a class="nav-link top-nav" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="ti-bell"></i>
                 <span class="badge bg-danger notification-status"> </span>

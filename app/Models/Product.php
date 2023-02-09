@@ -10,9 +10,9 @@ class Product extends Model
     use HasFactory;
     protected $table = 'Products';
     protected $fillable = array('name','description','price','category_id','sku');
-    public function categories()
+    public function category()
     {
-        return $this->hasOne('App\models\Category');
+        return $this->belongsTo('App\models\Category');
     }
 
     public function media()

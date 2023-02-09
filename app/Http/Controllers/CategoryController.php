@@ -31,7 +31,7 @@ class CategoryController extends Controller
         return [
             'name' => 'required|string|min:3|max:200',
             'description' => 'nullable|string|min:3|max:200',
-            'image' => 'nullable',
+            'image' => 'nullable|image',
             'image.*' => 'image|mimes:jpg,jpeg,png',
         ];
     }
@@ -42,7 +42,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view($this->index_view);
+        $categories=Category::all();
+        return view($this->index_view,compact(['categories']));
     }
 
     /**
@@ -69,7 +70,6 @@ class CategoryController extends Controller
             $object = $this->model_instance::create(Arr::except($validated_data,['image']));
 
             if ($request->has('image')) {
-
                 $image=$validated_data["image"];
                 $img_file_path = Storage::disk('public_images')->put('categories', $image);
                 $image_name=$request->file('image')->getClientOriginalName();

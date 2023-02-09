@@ -42,45 +42,36 @@ class ProductController extends Controller
         $this->edit_variation_view = 'dashboard.products.edit_variation';
         $this->index_route = 'dashboard.product.index';
         $this->create_route = 'product.create';
-        $this->success_message = trans('admin.created_successfully');
-        $this->update_success_message = trans('admin.update_created_successfully');
-        $this->error_message = trans('admin.fail_while_create');
-        $this->update_error_message = trans('admin.fail_while_update');
+        $this->success_message = 'Product Added successfully';
+        $this->update_success_message = 'Product Updated successfully';
+        $this->error_message = "Product Couldn't Been Added";
+        $this->update_error_message = "Product Couldn't Been Updated";
         $this->model_instance = Product::class;
     }
 
     private function StoreValidationRules()
     {
         return [
+            'sku' => 'nullable|string|min:3|max:10',
             'name' => 'required|string|min:3|max:200',
-            'sku' => 'nullable|string|min:3|max:200',
-            'images' => 'nullable|string',
-            'images.*' => 'image|mimes:jpg,jpeg,png',
-            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string|min:3|max:300',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image',
+            'image.*' => 'image|mimes:jpg,jpeg,png',
+            'category_id' => 'nullable|exists:categories,id',
         ];
     }
 
     private function UpdateValidationRules()
     {
         return [
-            'name' => 'sometimes|string|min:3|max:200',
-            'english_name' => 'sometimes|string|min:3|max:200',
-            'sku' => 'nullable|string|min:3|max:200',
-            'description' => 'nullable|string',
-            'english_description' => 'nullable|string',
-            'made_in' => 'nullable|string',
-            'currency' => 'sometimes|in:IQD,USD,SYP',
-            'stock_status' => 'sometimes|in:in,out',
-            'status' => 'sometimes|in:active,inactive',
-            'unit_price' => 'sometimes|numeric',
-            'unit_discount_price' => 'nullable|numeric',
-            'wholesale_price' => 'nullable|numeric',
-            'wholesale_discount_price' => 'nullable|numeric',
-            'stock_quantity' => 'nullable|numeric',
-            'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpg,jpeg,png',
-            'variation_images' => 'nullable|array',
-            'variation_images.*' => 'image|mimes:jpg,jpeg,png'
+            'sku' => 'nullable|string|min:3|max:10',
+            'name' => 'required|string|min:3|max:200',
+            'description' => 'required|string|min:3|max:300',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image',
+            'image.*' => 'image|mimes:jpg,jpeg,png',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 
@@ -130,34 +121,28 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // has_access('product_create');
+
         $validated_data = $request->validate($this->StoreValidationRules());
         try {
-            $object = $this->model_instance::create($validated_data);
-
-            if ($request->has('images')) {
-                foreach ($validated_data["images"] as $image) {
-                    $img_file_path = Storage::disk('public_images')->put('products', $image);
-                    $image_url = getMediaUrl($img_file_path);
-                    ProductMedia::create([
-                        'product_id' => $object->id,
-                        'media_type' => 'image',
-                        'media_url' => $image_url
-                    ]);
-                }
+        $object = $this->model_instance::create(Arr::except($validated_data,['image']));
+            if($request->has('image')) {
+                $image=$validated_data["image"];
+                $img_file_path = Storage::disk('public_images')->put('products', $image);
+                $image_name=$request->file('image')->getClientOriginalName();
+                $image_url = getMediaUrl($img_file_path);
+                $object->image_url=$image_url;
+                $object->image_name=$image_name;
+                $object->update();
             }
-
 
             $log_message = trans('products.create_log') . '#' . $object->id;
             UserActivity::logActivity($log_message);
-
-
             return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
         } catch (\Exception $ex) {
 
             Log::error($ex->getMessage());
             return redirect()->route($this->create_route)->with('error', $this->error_message);
         }
-
 
     }
 

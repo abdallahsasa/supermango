@@ -19,6 +19,9 @@ return new class extends Migration {
             $table->longText('description')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
+            $table->string('image_name')->nullable();
+            $table->string('image_url')->nullable();
+            $table->double('price',8,2)->nullable();
             $table->bigInteger('category_id')->unsigned();
             $table->index('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

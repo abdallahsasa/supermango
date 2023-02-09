@@ -34,10 +34,10 @@
                             <tr>
                                 <td>{{$product->sku}}</td>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->category}}</td>
+                                <td>{{$product->category->name}}</td>
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->status}}</td>
-                                <td>{{$product->get_images}}}</td>
+                                <td class="tr-image" ><img class="image-20" src="{{$product->image_url}}"></td>
                             </tr>
                             @endforeach
                             </tbody>
