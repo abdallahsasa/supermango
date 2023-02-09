@@ -25,9 +25,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ProductController::class, 'index'])->name('home.product.index');
+
 Route::get('/soon', function () {
     return view('coming_soon');
 });
