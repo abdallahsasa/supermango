@@ -42,7 +42,7 @@
                 <a href="#" class="dropdown-item">Order confirmation<small class="float-end text-muted time">2 days</small> </a>
             </div>
         </li>
-        <li class="nav-item dropdown ">
+        <li style="display: none;"  class="nav-item dropdown ">
             <a class="nav-link top-nav" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
                 <div class="dropdown-header">
