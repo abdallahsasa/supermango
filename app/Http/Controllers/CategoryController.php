@@ -31,7 +31,7 @@ class CategoryController extends Controller
         return [
             'name' => 'required|string|min:3|max:200',
             'description' => 'nullable|string|min:3|max:200',
-            'image' => 'nullable|string',
+            'image' => 'nullable',
             'image.*' => 'image|mimes:jpg,jpeg,png',
         ];
     }
@@ -65,28 +65,29 @@ class CategoryController extends Controller
     {
         // has_access('product_create');
         $validated_data = $request->validate($this->StoreValidationRules());
-
-
+        try {
             $object = $this->model_instance::create(Arr::except($validated_data,['image']));
 
             if ($request->has('image')) {
 
                 $image=$validated_data["image"];
-                    $img_file_path = Storage::disk('public')->put('categories', $image);
-                dd($request->file('image'));
-                    $image_name=$request->file('image')->getClientOriginalName();
-                    $image_url = getMediaUrl($img_file_path);
+                $img_file_path = Storage::disk('public_images')->put('categories', $image);
+                $image_name=$request->file('image')->getClientOriginalName();
+                $image_url = getMediaUrl($img_file_path);
                   $object->image_url=$image_url;
                   $object->image_name=$image_name;
-
-                  $object->save;
+                  $object->update();
             }
 
             $log_message = trans('categories.create_log') . '#' . $object->id;
             UserActivity::logActivity($log_message);
 
             return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
+        } catch (\Exception $ex) {
 
+            Log::error($ex->getMessage());
+            return redirect()->route($this->create_route)->with('error', $this->error_message);
+        }
     }
 
     /**
