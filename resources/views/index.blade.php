@@ -28,10 +28,15 @@
                                 </div>
                                 <div class="sb-card-tp">
                                     <h4 class="sb-card-title">{{$product->name}}</h4>
-                                    <div class="sb-price"><sub>{{$product->currency}}</sub> {{$product->price}}</div>
+                                    <div class="sb-price"> {{$product->price}} <sub>{{$product->currency}}</sub></div>
+
                                 </div>
+                                <div class="sb-card-tp">
+                                    <p class="sb-text text-center">{{$product->description}}</p>
+                                </div>
+
                                 <div class="sb-description">
-                                    <p class="sb-text sb-mb-15">{{$product->description}}</p>
+
                                     <ul class="sb-stars" style="display: none;">
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
@@ -83,11 +88,11 @@
                             <div class="sb-promo-frame sb-mb-30">
                                 <div class="sb-promo-content">
                                     <div class="sb-text-frame">
-                                        <h3 class="sb-mb-15">Deliveroo</h3>
-                                        <h3 class="sb-mb-10"><b class="sb-h2">More And More Juice</b></h3>
+                                        <h3 class="sb-mb-10">Deliveroo</h3>
+                                        <h3 class="sb-mb-15">More And More Juice </h3>
                                         <p class="sb-text sb-text-sm sb-mb-15">Delivered to your door</p>
                                         <!-- button -->
-                                        <a  href="https://deliveroo.com.kw/en/brands/more-and-more-juice" class="sb-btn sb-ppc">
+                                        <a href="https://deliveroo.com.kw/en/brands/more-and-more-juice" class="sb-btn sb-ppc" target="_blank">
                       <span class="sb-icon">
                         <img src="img/ui/icons/arrow.svg" alt="icon">
                       </span>
@@ -96,8 +101,8 @@
                                         <!-- button end -->
                                     </div>
                                     <div class="sb-image-frame">
-                                        <div class="sb-illustration-5">
-                                            <img src="img/ui/deliveroo-logo.svg" alt="cup" class="sb-cup">
+                                        <div class="sb-illustration-4">
+                                            <img src="img/ui/deliveroo-logo.svg" alt="burger" class="sb-burger">
                                             <div class="sb-cirkle-1 deliveroo"></div>
                                             <div class="sb-cirkle-2 deliveroo"></div>
                                             <div class="sb-cirkle-3 deliveroo"></div>
@@ -106,6 +111,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
