@@ -70,6 +70,7 @@ Route::group(['prefix' => 'backoffice'], function () {
 });
 //FrontEnd Routes
 Route::get('/', [FrontendController::class, 'soon'])->name('home.product.index');
+Route::get('/home', [FrontendController::class, 'index'])->name('home.product.index');
 Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
 
 //------------- Message -------------
