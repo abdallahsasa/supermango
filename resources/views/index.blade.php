@@ -36,7 +36,6 @@
                                 </div>
 
                                 <div class="sb-description">
-
                                     <ul class="sb-stars" style="display: none;">
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
