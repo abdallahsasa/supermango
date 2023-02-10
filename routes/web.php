@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\ProductController;
@@ -25,21 +26,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', [ProductController::class, 'index'])->name('home.product.index');
-
-Route::get('/soon', function () {
-    return view('coming_soon');
-});
-
-
-//------------- Message -------------
-Route::get('/contact', [MessageController::class, 'create'])->name('contact');
-Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
-//------------- End Message -------------
-
 
 //---------------------------------------Backoffice----------------------------------------------------
-
 
 Route::get('/backoffice', function () {
     return view('dashboard.index');
@@ -80,3 +68,12 @@ Route::group(['prefix' => 'backoffice'], function () {
 //------------- End Message -------------
 
 });
+//FrontEnd Routes
+Route::get('/', [FrontendController::class, 'index'])->name('home.product.index');
+Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
+
+//------------- Message -------------
+Route::get('/contact', [MessageController::class, 'create'])->name('contact');
+Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
+//------------- End Message -------------
+

@@ -33,7 +33,7 @@
                             <div class="sb-contact-form-frame">
                                 <div class="sb-illustration-9">
                                     <img src="img/illustrations/envelope-1.png" alt="envelope" class="sb-envelope-1">
-                                    <img src="img/illustrations/envelope-2.png" alt="envelope" class="sb-envelope-2">
+                                    <img src="img/illustrations/reservation.png" alt="envelope" class="sb-envelope-2">
                                     <div class="sb-cirkle-1"></div>
                                     <div class="sb-cirkle-2"></div>
                                     <div class="sb-cirkle-3"></div>
@@ -146,7 +146,7 @@
                                 <div class="sb-number">02</div>
                                 <div class="sb-feature-text">
                                     <h3 class="sb-mb-15">Call</h3>
-                                    <p class="sb-text">+02 (044) 756-X6-52</p>
+                                    <p class="sb-text">99661090 - 99661080</p>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                                 <div class="sb-number">03</div>
                                 <div class="sb-feature-text">
                                     <h3 class="sb-mb-15">Write</h3>
-                                    <p class="sb-text">starbelly@mail.com</p>
+                                    <p class="sb-text">Info@moreandmore-kw.com</p>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
             <!-- contact info end -->
 
             <!-- map -->
-            <div class="sb-map-frame">
+            <div style="display: none;" class="sb-map-frame">
                 <div id="map" class="sb-map"></div>
                 <div class="sb-lock"><i class="fas fa-lock"></i></div>
             </div>

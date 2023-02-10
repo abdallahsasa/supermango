@@ -71,7 +71,7 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Price</label>
-                            <input name="price" type="number" class="form-control" aria-describedby="emailHelp"
+                            <input name="price" step=".01" type="number" class="form-control" aria-describedby="emailHelp"
                                    placeholder="Enter Product Price">
                             @if($errors->has('price'))
                                 <div class="alert alert-danger" role="alert">
