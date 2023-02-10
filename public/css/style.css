@@ -4615,12 +4615,12 @@ illustration 4
 
 .sb-illustration-4 .sb-burger {
     position: absolute;
-    width: 95%;
+    width: 55%;
     height: 100%;
     object-fit: contain;
     object-position: center;
     top: 0;
-    right: 0;
+    right: 60px;
     animation: anima2 3s infinite ease-in-out;
 }
 
