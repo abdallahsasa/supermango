@@ -44,7 +44,7 @@
                                         <form id="form" method="POST" action="{{route('contact.store')}}">
                                             @csrf
                                             <div class="sb-group-input">
-                                                <input type="text" name="name" required>
+                                                <input type="text" name="name" required value="{{old('name')}}" >
                                                 <span class="sb-bar"></span>
                                                 <label>Name</label>
                                                 @if($errors->has('name'))
@@ -54,7 +54,7 @@
                                                 @endif
                                             </div>
                                             <div class="sb-group-input">
-                                                <input type="text" name="number" required>
+                                                <input type="text" name="number" required value="{{ old('number') }}">
                                                 <span class="sb-bar"></span>
                                                 <label>Phone Number</label>
                                                 @if($errors->has('number'))
@@ -64,7 +64,7 @@
                                                 @endif
                                             </div>
                                             <div class="sb-group-input">
-                                                <input type="email" name="email" required>
+                                                <input type="email" name="email" required value="{{ old('email') }}">
                                                 <span class="sb-bar"></span>
                                                 <label>Email</label>
                                                 @if($errors->has('email'))
@@ -74,7 +74,7 @@
                                                 @endif
                                             </div>
                                             <div class="sb-group-input">
-                                                <textarea name="message" required></textarea>
+                                                <textarea name="message" required> {{ old('message') }}</textarea>
                                                 <span class="sb-bar"></span>
                                                 <label>Message</label>
                                                 @if($errors->has('message'))

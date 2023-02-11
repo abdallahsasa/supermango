@@ -32,16 +32,18 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">Category Name</label>
-                            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+                            <select name="category_id" class="form-control" id="exampleFormControlSelect1"
+                                    value="{{old('category_id')}}">
+{{--                                <option selected="selected">Choose The Product's Category</option>--}}
                                 @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Sku</label>
                             <input name="sku" type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Enter Product Name">
+                                   placeholder="Enter Product Name" value="{{old('sku')}}">
                             @if($errors->has('sku'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('sku') }}
@@ -51,7 +53,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Name</label>
                             <input name="name" type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Enter Product Name">
+                                   placeholder="Enter Product Name" value="{{old('name')}}">
                             @if($errors->has('name'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('name') }}
@@ -61,7 +63,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">Product Description</label>
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
-                                      rows="3"></textarea>
+                                      rows="3">{{old('description')}}</textarea>
                             @if($errors->has('description'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('description') }}
@@ -71,8 +73,9 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Price</label>
-                            <input name="price" step=".01" type="number" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Enter Product Price">
+                            <input name="price" step=".01" type="number" class="form-control"
+                                   aria-describedby="emailHelp"
+                                   placeholder="Enter Product Price" value="{{old('price')}}">
                             @if($errors->has('price'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('price') }}
@@ -82,7 +85,7 @@
 
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Product Image</label>
-                            <input name="image" type="file" class="form-control-file" >
+                            <input name="image" type="file" class="form-control-file" value="{{old('image')}}">
                             @if($errors->has('image'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('image') }}

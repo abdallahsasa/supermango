@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\ContactUs\ContactUsController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\WebsiteProfile\WebsiteProfileController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\CategoryController;
-use \App\Http\Controllers\ProductController;
-use \App\Http\Controllers\MessageController;
-use \App\Http\Controllers\WebsiteProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +60,7 @@ Route::group(['prefix' => 'backoffice'], function () {
 
 
 //------------- Message -------------
-    Route::get('/contact/index', [MessageController::class, 'index'])->name('contact.index');
+    Route::get('/contact/index', [ContactUsController::class, 'index'])->name('contact.index');
 //------------- End Message -------------
 
 //------------- Website Profile -------------
@@ -74,7 +75,7 @@ Route::get('/home', [FrontendController::class, 'index'])->name('home.product.in
 Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
 
 //------------- Message -------------
-Route::get('/contact', [MessageController::class, 'create'])->name('contact');
-Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
+Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
+Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 //------------- End Message -------------
 

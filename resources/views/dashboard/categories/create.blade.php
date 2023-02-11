@@ -33,7 +33,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Category Name</label>
                             <input name="name" type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Enter Category Name">
+                                   placeholder="Enter Category Name" value="{{old('name')}}">
                             @if($errors->has('name'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('name') }}
@@ -43,7 +43,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">Category Description</label>
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
-                                      rows="3"></textarea>
+                                      rows="3">{{old('description')}}</textarea>
                             @if($errors->has('description'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('description') }}
@@ -52,7 +52,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Category Image</label>
-                            <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" value="{{old('image')}}">
                             @if($errors->has('image'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('image') }}

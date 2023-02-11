@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
+        Schema::table('contact-us', function (Blueprint $table) {
             $table->string('name');
             $table->string('email');
             $table->string('number');
@@ -29,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
+        Schema::table('contact-us', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->dropColumn('email');
             $table->dropColumn('number');
