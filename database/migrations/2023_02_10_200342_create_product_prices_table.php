@@ -14,7 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('product_prices', function (Blueprint $table) {
-            $table->bigIncrements();
+            $table->bigIncrements('id');
+            $table->bigInteger('product_id')->unsigned();
+            $table->index('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('size')->default('medium');
+            $table->string('type')->nullable();
+            $table->string('description')->nullable();
+            $table->double('price',8,2)->nullable();
             $table->timestamps();
         });
     }
