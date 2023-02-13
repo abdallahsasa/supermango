@@ -28,23 +28,24 @@
                                 </div>
                                 <div class="sb-card-tp">
                                     <h4 class="sb-card-title">{{$product->name}}</h4>
-                                    <div class="sb-price"> {{$product->price}} <sub>{{$product->currency}}</sub></div>
+                                    <div class="sb-price"> {{$product->prices[0]['price']}} <sub>{{$product->currency}}</sub></div>
 
                                 </div>
                                 <div class="sb-card-tp">
-                                    <p class="sb-text text-center">{{$product->description}}</p>
+                                    <p class="sb-text text-center">{!!$product->description!!}</p>
+                                </div>
+                                <div class="sb-card-tp">
+
+                                    <div class="sb-description">
+                                        <ul class="sb-stars" style="padding-bottom: 5px;">
+                                            @foreach($product->prices as $var)
+                                                <li>{{$var->size}}:<span class="" style="width: 30px;height: 20px;font-size: 12px;">{{$var->price}} {{$product->currency}}</span></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
 
-                                <div class="sb-description">
-                                    <ul class="sb-stars" style="display: none;">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><span>(4 ratings)</span></li>
-                                    </ul>
-                                </div>
+
                             </a>
                         </div>
                         @endforeach
