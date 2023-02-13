@@ -32,9 +32,8 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">Category Name</label>
-                            <select required name="category_id" class="form-control" id="exampleFormControlSelect1"
+                            <select required name="category_id" class="form-select form-select-lg mb-3" id="exampleFormControlSelect1"
                                     value="{{old('category_id')}}">
-{{--                                <option selected="selected">Choose The Product's Category</option>--}}
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
