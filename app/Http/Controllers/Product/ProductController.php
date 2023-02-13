@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use App\models\Attribute;
-use App\models\Category;
+use App\Models\Attribute;
+use App\Models\Category;
 use App\Models\product;
 use App\models\ProductMedia;
 use App\Models\ProductPrices;
-use App\models\Tag;
-use App\models\UserActivity;
+use App\Models\Tag;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
