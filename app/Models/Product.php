@@ -24,7 +24,10 @@ class Product extends Model
     {
         return $this->hasMany('App\models\ProductTag');
     }
-
+    public function prices()
+    {
+        return $this->hasMany('App\models\ProductPrices');
+    }
     public function attributes()
     {
         return $this->belongsToMany('App\models\Attribute')->withPivot('values');

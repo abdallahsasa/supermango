@@ -7,8 +7,7 @@ use App\models\Attribute;
 use App\models\Category;
 use App\Models\product;
 use App\models\ProductMedia;
-use App\models\ProductTranslation;
-use App\models\ProductVariationAttribute;
+use App\Models\ProductPrices;
 use App\models\Tag;
 use App\models\UserActivity;
 use Illuminate\Http\Request;
@@ -56,10 +55,10 @@ class ProductController extends Controller
             'sku' => 'nullable|string|min:3|max:10',
             'name' => 'required|string|min:3|max:200',
             'description' => 'required|string|min:3|max:300',
-            'price' => 'required|numeric',
             'image' => 'required|image',
             'image.*' => 'image|mimes:jpg,jpeg,png',
             'category_id' => 'nullable|exists:categories,id',
+            'prices' => 'nullable|array',
         ];
     }
 
@@ -69,7 +68,6 @@ class ProductController extends Controller
             'sku' => 'nullable|string|min:3|max:10',
             'name' => 'required|string|min:3|max:200',
             'description' => 'required|string|min:3|max:300',
-            'price' => 'required|numeric',
             'image' => 'image',
             'image.*' => 'image|mimes:jpg,jpeg,png',
             'category_id' => 'required|exists:categories,id',
@@ -122,7 +120,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // has_access('product_create');
-
         $validated_data = $request->validate($this->StoreValidationRules());
 
         try {
@@ -136,7 +133,20 @@ class ProductController extends Controller
                 $object->image_name=$image_name;
                 $object->update();
             }
-
+            if($request->has('prices'))
+            {
+                $prices = $request->prices;
+                foreach ($prices as $price)
+                {
+                    ProductPrices::create([
+                        'product_id' => $object->id,
+                        'size' => $price['size'],
+                        'type' =>  'none',
+                        'description' => 'none',
+                        'price' => $price['price'],
+                    ]);
+                }
+            }
             $log_message = trans('products.create_log') . '#' . $object->id;
             UserActivity::logActivity($log_message);
 

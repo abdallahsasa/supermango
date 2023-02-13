@@ -32,7 +32,7 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">Category Name</label>
-                            <select name="category_id" class="form-control" id="exampleFormControlSelect1"
+                            <select required name="category_id" class="form-control" id="exampleFormControlSelect1"
                                     value="{{old('category_id')}}">
 {{--                                <option selected="selected">Choose The Product's Category</option>--}}
                                 @foreach($categories as $category)
@@ -42,8 +42,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Sku</label>
-                            <input name="sku" type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Enter Product Name" value="{{old('sku')}}">
+                            <input required name="sku" type="text" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Ex.. juice-01 " value="{{old('sku')}}">
                             @if($errors->has('sku'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('sku') }}
@@ -52,7 +52,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Name</label>
-                            <input name="name" type="text" class="form-control" aria-describedby="emailHelp"
+                            <input required name="name" type="text" class="form-control" aria-describedby="emailHelp"
                                    placeholder="Enter Product Name" value="{{old('name')}}">
                             @if($errors->has('name'))
                                 <div class="alert alert-danger" role="alert">
@@ -62,26 +62,42 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">Product Description</label>
-                            <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
-                                      rows="3">{{old('description')}}</textarea>
-                            @if($errors->has('description'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $errors->first('description') }}
-                                </div>
-                            @endif
+                                    <textarea id="summernote" name="description" class="form-control" id="exampleFormControlTextarea1"
+                                              rows="3">{{old('description')}}</textarea>
+                                    @if($errors->has('description'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $errors->first('description') }}
+                                        </div>
+                                    @endif
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">Product Price</label>
-                            <input name="price" step=".01" type="number" class="form-control"
-                                   aria-describedby="emailHelp"
-                                   placeholder="Enter Product Price" value="{{old('price')}}">
-                            @if($errors->has('price'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $errors->first('price') }}
-                                </div>
-                            @endif
+                            <h4 class="form-label">Product Prices</h4>
                         </div>
+                            <div class="repeater-add">
+                                <div data-repeater-list="prices">
+                                    <div data-repeater-item="">
+                                        <div class="row mb-20">
+                                            <div class="col-md-4">
+                                                <label class="form-label" for="inputAddress5">Size</label>
+                                                <input required name="size" type="text" class="form-control" id="size" placeholder="Enter Product Size">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label" for="inputAddress5">Price</label>
+                                                <input required name="price" step=".01" type="number" class="form-control" id="price" placeholder="Enter Product Price">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="d-grid">
+                                                    <input class="btn btn-danger mt-30" data-repeater-delete="" type="button" value="Delete">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix mb-20">
+                                    <input class="button" data-repeater-create="" type="button" value="Add Product Price">
+                                </div>
+                            </div>
 
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Product Image</label>
