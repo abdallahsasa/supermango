@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
-                                <td>{{$category->description}}</td>
+                                <td>{!!$category->description !!}</td>
                                 <td class="tr-image" ><img class="image-20" src="{{$category->image_url}}"></td>
                             </tr>
                             @endforeach

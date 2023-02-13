@@ -24,21 +24,33 @@
                                 <th>SKU</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Price</th>
                                 <th>Status</th>
                                 <th>Image</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($products as $product )
-                            <tr>
-                                <td>{{$product->sku}}</td>
-                                <td>{{$product->name}}</td>
-                                <td>{{$product->category->name}}</td>
-                                <td>{{$product->price}}</td>
-                                <td>{{$product->status}}</td>
-                                <td class="tr-image" ><img class="image-20" src="{{$product->image_url}}"></td>
-                            </tr>
+                                <tr>
+                                    <td>{{$product->sku}}</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->category->name}}</td>
+                                    <td>
+                                        <span
+                                            class="@if($product->status == 'active')text-success @else text-danger @endif ">{{$product->status}} </span>
+                                    </td>
+                                    <td class="tr-image"><img class="image-20" src="{{$product->image_url}}"></td>
+                                    <td>
+                                        <a class="pe-2" href="{{route('dashboard.product.edit',$product->id)}}"> <i
+                                                class="fa fa-pencil"></i></a>
+
+                                        <a id="sweetalert-08" class="fa fa-trash-o text-danger"
+                                           href="{{route('dashboard.product.destroy',$product->id)}}"
+                                           aria-label="Try me! Example: A warning message, with a function attached to the 'Confirm'-button">
+                                        </a>
+                                    </td>
+
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

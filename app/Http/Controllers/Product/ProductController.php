@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         $this->index_view = 'dashboard.products.index';
         $this->create_view = 'dashboard.products.create';
-        $this->show_view = 'dashboard.products.show';
+        $this->show_view = 'products.show';
         $this->edit_view = 'dashboard.products.edit';
         $this->edit_variation_view = 'dashboard.products.edit_variation';
         $this->index_route = 'dashboard.product.index';
@@ -86,15 +86,15 @@ class ProductController extends Controller
         $filter = request()->has('filter') ? request()->filter : 'all';
 
 
-        if($filter == "all")
+        if ($filter == "all")
             $products = $this->model_instance::all();
         else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
 
-        $categories = Category::all();
+        $categories = Category::where('status', '=', 'active')->get();
 
-        return view($this->index_view, compact(['products','categories','filter']));
+        return view($this->index_view, compact(['products', 'categories', 'filter']));
     }
 
     /**
@@ -108,13 +108,13 @@ class ProductController extends Controller
         //has_access('product_create');
         $categories = Category::all();
         $attributes = Attribute::all();
-        return view($this->create_view,compact(['categories','attributes']));
+        return view($this->create_view, compact(['categories', 'attributes']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -123,25 +123,23 @@ class ProductController extends Controller
         $validated_data = $request->validate($this->StoreValidationRules());
 
         try {
-        $object = $this->model_instance::create(Arr::except($validated_data,['image']));
-            if($request->has('image')) {
-                $image=$validated_data["image"];
+            $object = $this->model_instance::create(Arr::except($validated_data, ['image']));
+            if ($request->has('image')) {
+                $image = $validated_data["image"];
                 $img_file_path = Storage::disk('public_images')->put('products', $image);
-                $image_name=$request->file('image')->getClientOriginalName();
+                $image_name = $request->file('image')->getClientOriginalName();
                 $image_url = getMediaUrl($img_file_path);
-                $object->image_url=$image_url;
-                $object->image_name=$image_name;
+                $object->image_url = $image_url;
+                $object->image_name = $image_name;
                 $object->update();
             }
-            if($request->has('prices'))
-            {
+            if ($request->has('prices')) {
                 $prices = $request->prices;
-                foreach ($prices as $price)
-                {
+                foreach ($prices as $price) {
                     ProductPrices::create([
                         'product_id' => $object->id,
                         'size' => $price['size'],
-                        'type' =>  'none',
+                        'type' => 'none',
                         'description' => 'none',
                         'price' => $price['price'],
                     ]);
@@ -162,20 +160,23 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-
         $product = $this->model_instance::findOrFail($id);
-        return view($this->show_view, compact('product'));
+        $relatedProducts = Product::whereNotIn('id', [$product->id])
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
+        return view($this->show_view, compact('product', 'relatedProducts'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -185,10 +186,10 @@ class ProductController extends Controller
 
         $product = $this->model_instance::findOrFail($id);
         $attributes = Attribute::all();
-        $categories = Category::getAssignableCategories();
+        $categories = Category::where('status', '=', 'active')->get();
 
 
-        return view($this->edit_view, compact(['product','categories','attributes']));
+        return view($this->edit_view, compact(['product', 'categories', 'attributes']));
     }
 
 
@@ -196,8 +197,7 @@ class ProductController extends Controller
     {
 
 
-
-       // has_access('product_update');
+        // has_access('product_update');
 
         $product = $this->model_instance::findOrFail($id);
         $attributes = Attribute::all();
@@ -206,13 +206,14 @@ class ProductController extends Controller
         $categories = Category::getAssignableCategories();
 
 
-        return view($this->edit_variation_view, compact(['product','categories','attributes']));
+        return view($this->edit_variation_view, compact(['product', 'categories', 'attributes']));
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -224,30 +225,25 @@ class ProductController extends Controller
 
         try {
             $object = $this->model_instance::find($id);
-            $updated_instance = $object->update(Arr::except($validated_data,['english_description','english_name']));
+            $updated_instance = $object->update(Arr::except($validated_data, ['english_description', 'english_name']));
 
-            $name_trans=[
-                'lang'=>'en',
-                'translatable_attribute'=>'name',
-                'value'=>$request->english_name,
+            $name_trans = [
+                'lang' => 'en',
+                'translatable_attribute' => 'name',
+                'value' => $request->english_name,
             ];
             $object->updateTranslation($name_trans);
 
-            $desc_trans=[
-                'lang'=>'en',
-                'translatable_attribute'=>'description',
-                'value'=>$request->english_description,
+            $desc_trans = [
+                'lang' => 'en',
+                'translatable_attribute' => 'description',
+                'value' => $request->english_description,
             ];
             $object->updateTranslation($desc_trans);
 
 
-
-
-
-            if($request->has('variations') && !empty($request->variations))
-            {
-                foreach ($request->variations as $variation)
-                {
+            if ($request->has('variations') && !empty($request->variations)) {
+                foreach ($request->variations as $variation) {
 
                     $additional_data = [
                         'parent_id' => $object->id,
@@ -256,7 +252,7 @@ class ProductController extends Controller
                     ];
 
 
-                    $variant_data = array_merge($variation,$additional_data);
+                    $variant_data = array_merge($variation, $additional_data);
 
 
                     $new_variation_object = $object->replicate();
@@ -265,12 +261,8 @@ class ProductController extends Controller
                     $new_variation_object->update($variant_data);
 
 
-
-
-                    if(isset($variation["attributes"]) && !empty($variation["attributes"]))
-                    {
-                        foreach ($variation["attributes"] as $key => $attribute)
-                        {
+                    if (isset($variation["attributes"]) && !empty($variation["attributes"])) {
+                        foreach ($variation["attributes"] as $key => $attribute) {
 
                             ProductVariationAttribute::create([
                                 'product_id' => $new_variation_object->id,
@@ -283,12 +275,9 @@ class ProductController extends Controller
                     }
 
 
+                    if (isset($validated_data["variation_images"]) && !empty($validated_data["variation_images"])) {
 
-                    if(isset($validated_data["variation_images"]) && !empty($validated_data["variation_images"]))
-                    {
-
-                        foreach ($validated_data["variation_images"] as $image)
-                        {
+                        foreach ($validated_data["variation_images"] as $image) {
                             $img_file_path = Storage::disk('public_images')->put('products', $image);
                             $image_url = getMediaUrl($img_file_path);
                             ProductMedia::create([
@@ -303,12 +292,10 @@ class ProductController extends Controller
                 }
             }
 
-            if($request->has('images'))
-            {
+            if ($request->has('images')) {
 
 
-                foreach ($validated_data["images"] as $image)
-                {
+                foreach ($validated_data["images"] as $image) {
                     $img_file_path = Storage::disk('public_images')->put('products', $image);
                     $image_url = getMediaUrl($img_file_path);
                     ProductMedia::create([
@@ -322,83 +309,67 @@ class ProductController extends Controller
                 }
             }
 
-            if($request->has('removed_images_ids'))
-            {
-                $images = ProductMedia::whereIn('id',$request->removed_images_ids)->get();
-                foreach ($images as $image)
-                {
+            if ($request->has('removed_images_ids')) {
+                $images = ProductMedia::whereIn('id', $request->removed_images_ids)->get();
+                foreach ($images as $image) {
                     Storage::disk('public_images')->delete($image->media_path);
                     $image->delete();
                 }
             }
 
 
-            if($request->has('tags'))
-            {
+            if ($request->has('tags')) {
                 $tags = $request->tags;
 
                 $product_tags_ids = [];
 
-                foreach ($tags as $tag)
-                {
+                foreach ($tags as $tag) {
                     $tag_object = Tag::firstOrCreate([
                         'product_id' => $object->id,
                         'tag_value' => $tag
                     ]);
 
 
-
-                    array_push($product_tags_ids,$tag_object->id);
+                    array_push($product_tags_ids, $tag_object->id);
                 }
 
-                Tag::whereNotIn('id',$product_tags_ids)->where('product_id',$object->id)->delete();
+                Tag::whereNotIn('id', $product_tags_ids)->where('product_id', $object->id)->delete();
 
 
             }
 
 
-            if($request->has('categories'))
-            {
+            if ($request->has('categories')) {
 
                 $object->categories()->sync($request->categories);
             }
 
-            if($request->has('product_attributes'))
-            {
+            if ($request->has('product_attributes')) {
                 $object->attributes()->detach();
-                foreach ($request->product_attributes as $id => $values)
-                {
+                foreach ($request->product_attributes as $id => $values) {
                     $attribute = Attribute::findOrFail($id);
-                    $object->attributes()->attach($attribute->id,['values' => json_encode($values,JSON_UNESCAPED_UNICODE )]);
+                    $object->attributes()->attach($attribute->id, ['values' => json_encode($values, JSON_UNESCAPED_UNICODE)]);
                 }
             }
 
-            if($request->has('variant_attributes'))
-            {
-                foreach ($request->variant_attributes as $key => $value)
-                {
-                    ProductVariationAttribute::where(['parent_id' => $object->parent()->id,'attribute_id' => $key,'product_id' => $object->id])->update(['value' => $value]);
+            if ($request->has('variant_attributes')) {
+                foreach ($request->variant_attributes as $key => $value) {
+                    ProductVariationAttribute::where(['parent_id' => $object->parent()->id, 'attribute_id' => $key, 'product_id' => $object->id])->update(['value' => $value]);
                     $this->edit_view = 'admin.products.variation.edit';
                 }
             }
 
 
-
-            if(!$request->has('stock_management'))
-            {
+            if (!$request->has('stock_management')) {
                 $object->stockUnlimited()->update();
             }
-
-
-
-
 
 
             if ($updated_instance) {
 
                 $log_message = trans('products.update_log') . '#' . $object->id;
                 UserActivity::logActivity($log_message);
-                return redirect()->route($this->edit_view,$object->id)->with('success', $this->update_success_message);
+                return redirect()->route($this->edit_view, $object->id)->with('success', $this->update_success_message);
             } else {
                 return redirect()->route($this->index_route)->with('error', $this->update_error_message);
             }
@@ -414,14 +385,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
     {
 
-       // has_access('product_remove');
-
+        // has_access('product_remozve');
+        return $request;
         if ($request->ajax()) {
             $deleted = $this->model_instance::findOrFail($id)->delete();
             if ($deleted) {
@@ -445,8 +416,8 @@ class ProductController extends Controller
             return response()->json([]);
         }
 
-        $products = Product::where('name', 'LIKE', '%' . $term . '%')->where(['status' => 'active','stock_status' => 'in','is_variant'=>'no'])->limit(5)->get(['id', 'name']);
-        $map = $products->map(function($items){
+        $products = Product::where('name', 'LIKE', '%' . $term . '%')->where(['status' => 'active', 'stock_status' => 'in', 'is_variant' => 'no'])->limit(5)->get(['id', 'name']);
+        $map = $products->map(function ($items) {
             $data["id"] = $items->id;
             $data["text"] = $items->name;
             return $data;

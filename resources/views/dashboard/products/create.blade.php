@@ -38,6 +38,11 @@
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
+                            @if($errors->has('category_id'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $errors->first('category_id') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">Product Sku</label>
@@ -94,13 +99,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group clearfix mb-20">
-                                    <input class="button" data-repeater-create="" type="button" value="Add Product Price">
+                                    <input  class="button" data-repeater-create="" type="button" value="Add Product Price">
                                 </div>
                             </div>
 
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Product Image</label>
-                            <input name="image" type="file" class="form-control"  id="customFile" value="{{old('image')}}">
+                            <input required name="image" type="file" class="form-control"  id="customFile" value="{{old('image')}}">
                             @if($errors->has('image'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('image') }}

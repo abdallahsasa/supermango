@@ -55,7 +55,12 @@
 
 
 @extends('layouts.header')
-@yield('content')
+<div class="sb-app">
+    <!-- dynamic content -->
+    <div id="sb-dynamic-content" class="sb-transition-fade">
+        @yield('content')
+    </div>
+</div>
 </body>
 @extends('layouts.footer')
 </html>

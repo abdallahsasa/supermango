@@ -32,7 +32,12 @@ require __DIR__ . '/auth.php';
 
 Route::get('/backoffice', function () {
     return view('dashboard.index');
+
+
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
 
 //Dashboard Routes
 //, 'middleware' => ['auth', 'verified']
@@ -53,9 +58,11 @@ Route::group(['prefix' => 'backoffice'], function () {
 //------------- Products -------------
     Route::get('/products/index', [ProductController::class, 'index'])->name('dashboard.product.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
-    Route::get('/products/edit', [ProductController::class, 'edit'])->name('dashboard.product.edit');
+    Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('dashboard.product.edit');
     Route::post('/products/create', [ProductController::class, 'store'])->name('product.store');
-    Route::put('/products/update', [ProductController::class, 'update'])->name('product.update');
+    Route::put('/products/update', [ProductController::class, 'update'])->name('dashboard.product.update');
+    Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('dashboard.product.destroy');
+
 //------------- End Products -------------
 
 
@@ -73,9 +80,14 @@ Route::group(['prefix' => 'backoffice'], function () {
 Route::get('/', [FrontendController::class, 'soon'])->name('home.product.index');
 Route::get('/home', [FrontendController::class, 'index'])->name('home.product.index');
 Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
 
 //------------- Message -------------
 Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 //------------- End Message -------------
 
+Route::get('/product', function ()
+{
+    return view('products.index');
+});

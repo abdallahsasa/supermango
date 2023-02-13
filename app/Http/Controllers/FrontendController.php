@@ -19,6 +19,7 @@ class FrontendController extends Controller
         $this->show_view = 'show';
         $this->soon_view = 'coming_soon';
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,13 +30,15 @@ class FrontendController extends Controller
 
         $filter = request()->has('filter') ? request()->filter : 'all';
 
-        if($filter == "all")
-            $products = Product::all();
+        if ($filter == "all")
+            $products = Product::where('status', '=', 'active')
+                ->orderBy('created_at', 'desc')
+                ->get();
         else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
-        $categories = Category::all();
-        return view($this->index_view, compact(['products','categories','filter']));
+        $categories = Category::where('status', '=', 'active')->get();
+        return view($this->index_view, compact(['products', 'categories', 'filter']));
     }
 
     /**
