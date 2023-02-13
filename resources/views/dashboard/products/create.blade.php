@@ -101,7 +101,7 @@
 
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Product Image</label>
-                            <input name="image" type="file" class="form-control-file" value="{{old('image')}}">
+                            <input name="image" type="file" class="form-control"  id="customFile" value="{{old('image')}}">
                             @if($errors->has('image'))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errors->first('image') }}
