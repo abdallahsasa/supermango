@@ -144,13 +144,13 @@
             <div class="swiper-container sb-short-menu-slider-4i swiper-container-horizontal">
                 <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                     @foreach($relatedProducts as $rproduct)
-                        <div class="swiper-slide swiper-slide-active" style="width: 270px; margin-right: 30px;">
+                        <div class="swiper-slide" style="width: 270px; margin-right: 30px;">
                             <div class="sb-menu-item">
                                 <a href="{{route('home.product.show',$rproduct->id)}}" class="sb-cover-frame">
                                     <img src="{{$rproduct->image_url}}" alt="{{$rproduct->image_name}}">
                                 </a>
                                 <div class="sb-card-tp">
-                                    <h4 class="sb-card-title"><a href="shop-list-1.html">{{$rproduct->name}}</a>
+                                    <h4 class="sb-card-title"><a href="{{route('home.product.show',$rproduct->id)}}">{{$rproduct->name}}</a>
                                     </h4>
                                     <div class="sb-price">
                                         <sub>{{$rproduct->currency}}</sub> {{$rproduct->prices[0]['price']}}</div>
@@ -159,9 +159,8 @@
 
                         </div>
                     @endforeach
-
                 </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            </div>
         </div>
     </section>
 
