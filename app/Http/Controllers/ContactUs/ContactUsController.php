@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\ContactUs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -25,11 +25,11 @@ class ContactUsController extends Controller
         $this->edit_variation_view = 'dashboard.products.edit_variation';
         $this->index_route = 'dashboard.product.index';
         $this->create_route = 'product.create';
-        $this->success_message = 'Thank You For Contacting Us Your Message Has Received';
+        $this->success_message = 'Thank You For Contacting Us Your ContactUs Has Received';
         $this->update_success_message = trans('admin.update_created_successfully');
-        $this->error_message = "Your Message Couldn't Be Send" ;
+        $this->error_message = "Your ContactUs Couldn't Be Send" ;
         $this->update_error_message = trans('admin.fail_while_update');
-        $this->model_instance = Message::class;
+        $this->model_instance = ContactUs::class;
     }
     /**
      * Show the form for creating a new resource.
@@ -38,7 +38,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $messages = ContactUs::all();
 
         return view('/dashboard.contact-us.index',compact('messages'));
     }
@@ -80,10 +80,10 @@ class ContactUsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Message $message
+     * @param \App\Models\ContactUs $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(ContactUs $message)
     {
         //
     }
@@ -91,10 +91,10 @@ class ContactUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Message $message
+     * @param \App\Models\ContactUs $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit(ContactUs $message)
     {
         //
     }
@@ -103,10 +103,10 @@ class ContactUsController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Message $message
+     * @param \App\Models\ContactUs $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, ContactUs $message)
     {
         //
     }
@@ -114,10 +114,10 @@ class ContactUsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Message $message
+     * @param \App\Models\ContactUs $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(ContactUs $message)
     {
         //
     }

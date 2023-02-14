@@ -66,14 +66,14 @@ Route::group(['prefix' => 'backoffice'], function () {
 //------------- End Products -------------
 
 
-//------------- Message -------------
+//------------- ContactUs -------------
     Route::get('/contact/index', [ContactUsController::class, 'index'])->name('contact.index');
-//------------- End Message -------------
+//------------- End ContactUs -------------
 
 //------------- Website Profile -------------
     Route::get('/website-profile/index', [WebsiteProfileController::class, 'create'])->name('website_profile.create');
     Route::put('/website-profile/index', [WebsiteProfileController::class, 'update'])->name('website_profile.update');
-//------------- End Message -------------
+//------------- End ContactUs -------------
 
 });
 //FrontEnd Routes
@@ -82,10 +82,10 @@ Route::get('/home', [FrontendController::class, 'index'])->name('home.product.in
 Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
 
-//------------- Message -------------
+//------------- ContactUs -------------
 Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
-//------------- End Message -------------
+//------------- End ContactUs -------------
 
 Route::get('/product', function ()
 {
