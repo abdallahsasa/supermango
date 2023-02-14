@@ -9,12 +9,12 @@
                     <!-- main title -->
                     <div class="sb-main-title-frame">
                         <div class="sb-main-title">
-                            <h1 class="sb-h2">Online shop</h1>
+                            <h1 class="sb-h2">Online Menu</h1>
                             <ul class="sb-breadcrumbs">
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Shop</a></li>
+                                <li><a href="/">Home</a></li>
+
                                 <li>
-                                    <div>Product</div>
+                                    <div>{{$product->name}}</div>
                                 </li>
                             </ul>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="sb-price"><sub>{{$product->currency}}</sub> {{$product->prices[0]['price']}}
                             </div>
                         </div>
-                        <ul class="sb-stars sb-mb-25">
+                        <ul style="display: none;" class="sb-stars sb-mb-25">
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
@@ -59,7 +59,26 @@
                             <li><span>(4 ratings)</span></li>
                         </ul>
                         <p class="sb-text sb-mb-30"><span>{!!$product->description!!}</span></p>
-                        <div class="row">
+                        <div class="sb-filter">
+                            <a href="#." data-filter=".sb-ingredients-tab" class="sb-filter-link sb-active">Small, Medium, or Large:
+                                Choose Your Juice Size</a>
+
+                        </div>
+                        <!-- filter end -->
+                        <div class="sb-masonry-grid sb-tabs" style="position: relative; height: 299px;">
+                            <div class="sb-grid-sizer" style="position: absolute; display: none;"></div>
+                            <div class="sb-grid-item sb-ingredients-tab" style="position: absolute; left: 0%; top: 0px;">
+                                <div class="sb-tab">
+                                    <ul class="sb-list">
+                                        @foreach($product->prices as $prod)
+                                            <li><b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="display:none;" class="row">
                             <div class="col-lg-4">
                                 <div class="sb-features-item sb-features-item-sm sb-mb-30">
                                     <div class="sb-number">01</div>
@@ -93,25 +112,7 @@
                 </div>
             </div>
             <!-- filter -->
-            <div class="sb-filter">
-                <a href="#." data-filter=".sb-ingredients-tab" class="sb-filter-link sb-active">Small, Medium, or Large:
-                    Choose Your Juice Size</a>
 
-            </div>
-            <!-- filter end -->
-            <div class="sb-masonry-grid sb-tabs" style="position: relative; height: 299px;">
-                <div class="sb-grid-sizer" style="position: absolute; display: none;"></div>
-                <div class="sb-grid-item sb-ingredients-tab" style="position: absolute; left: 0%; top: 0px;">
-                    <div class="sb-tab">
-                        <ul class="sb-list">
-                            @foreach($product->prices as $prod)
-                                <li><b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
     <!-- product end -->
