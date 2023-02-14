@@ -58,7 +58,7 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><span>(4 ratings)</span></li>
                         </ul>
-                        <p class="sb-text sb-mb-30"><span>{!!$product->description!!}</span></p>
+                        <div class="sb-text sb-mb-30">{!!$product->description!!}</div>
 
                         <div class="row">
                             <div class="col-lg-4">
