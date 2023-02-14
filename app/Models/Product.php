@@ -12,30 +12,30 @@ class Product extends Model
     protected $fillable = array('name','description','price','category_id','sku');
     public function category()
     {
-        return $this->belongsTo('App\models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function media()
     {
-        return $this->hasMany('App\models\ProductMedia');
+        return $this->hasMany('App\Models\ProductMedia');
     }
 
     public function tags()
     {
-        return $this->hasMany('App\models\ProductTag');
+        return $this->hasMany('App\Models\ProductTag');
     }
     public function prices()
     {
-        return $this->hasMany('App\models\ProductPrices');
+        return $this->hasMany('App\Models\ProductPrices');
     }
     public function attributes()
     {
-        return $this->belongsToMany('App\models\Attribute')->withPivot('values');
+        return $this->belongsToMany('App\Models\Attribute')->withPivot('values');
     }
 
     public function reviews()
     {
-        return $this->hasMany('App\models\ProductReview');
+        return $this->hasMany('App\Models\ProductReview');
     }
 
     public function parent()
