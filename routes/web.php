@@ -60,7 +60,7 @@ Route::group(['prefix' => 'backoffice'], function () {
     Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
     Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('dashboard.product.edit');
     Route::post('/products/create', [ProductController::class, 'store'])->name('product.store');
-    Route::put('/products/update', [ProductController::class, 'update'])->name('dashboard.product.update');
+    Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('dashboard.product.update');
     Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('dashboard.product.destroy');
 
 //------------- End Products -------------

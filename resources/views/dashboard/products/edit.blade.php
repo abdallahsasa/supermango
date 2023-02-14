@@ -1,12 +1,5 @@
 @extends('dashboard.layouts.app')
 @section('content')
-
-    @if(session()->get('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session()->get('error') }}
-        </div>
-    @endif
-
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">
@@ -34,8 +27,8 @@
             @endif
             <div class="card card-statistics mb-30">
                 <div class="card-body">
-                    <form action="{{route('dashboard.product.update')}} " method="POST" enctype="multipart/form-data">
-                       @method('PUT')
+                    <form action="{{route('dashboard.product.update',$product->id)}} " method="POST" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-30">
@@ -45,10 +38,10 @@
                                             <label class="form-label" for="exampleFormControlSelect1">Category
                                                 Name</label>
                                             <select required name="category_id" class="form-select form-select-lg mb-3"
-                                                    id="exampleFormControlSelect1"
-                                                    value="{{old('category_id')}}">
+                                                    id="exampleFormControlSelect1">
                                                 @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{ $category->id }} {{old("category_id")}}"
+                                                            @if($category->id == $product->category_id) selected @endif>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                             @if($errors->has('category_id'))
@@ -93,21 +86,21 @@
                                         <div class="form-group mb-3">
                                             <div class="checkbox checbox-switch switch-success">
                                                 <label>
-                                                    <input type="checkbox" name="switch8" checked="">
-                                                    <span></span>
+                                                    <input type="checkbox" onchange="setval(this);" name="status" id="status-toggle" value="active" checked="">
+                                                    <span class="toggle-switch-inner"></span>
                                                     Checkbox Label
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">Meta Title</label>
-                                            <input  name="meta_title" type="text" class="form-control"
+                                            <input name="meta_title" type="text" class="form-control"
                                                    aria-describedby="emailHelp"
                                                    placeholder="Ex.. Orange Juice ">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">Meta Description</label>
-                                            <textarea  name="meta_description" class="form-control"
+                                            <textarea name="meta_description" class="form-control"
                                                       placeholder="Ex.. Orange Juice Description"></textarea>
                                         </div>
                                     </div>
@@ -205,4 +198,14 @@
 
 
     </div>
+
+
+    <script>
+        function setval(sel)
+        {
+
+        }
+    </script>
+
 @endsection
+

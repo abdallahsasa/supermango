@@ -71,6 +71,8 @@ class ProductController extends Controller
             'image' => 'image',
             'image.*' => 'image|mimes:jpg,jpeg,png',
             'category_id' => 'required|exists:categories,id',
+            'prices' => 'nullable|array',
+
         ];
     }
 
@@ -225,22 +227,7 @@ class ProductController extends Controller
 
         try {
             $object = $this->model_instance::find($id);
-            $updated_instance = $object->update(Arr::except($validated_data, ['english_description', 'english_name']));
-
-            $name_trans = [
-                'lang' => 'en',
-                'translatable_attribute' => 'name',
-                'value' => $request->english_name,
-            ];
-            $object->updateTranslation($name_trans);
-
-            $desc_trans = [
-                'lang' => 'en',
-                'translatable_attribute' => 'description',
-                'value' => $request->english_description,
-            ];
-            $object->updateTranslation($desc_trans);
-
+            $updated_instance = $object->update();
 
             if ($request->has('variations') && !empty($request->variations)) {
                 foreach ($request->variations as $variation) {
