@@ -54,7 +54,7 @@ class ProductController extends Controller
     private function StoreValidationRules()
     {
         return [
-            'sku' => 'nullable|string|min:3|max:10',
+            'sku' => 'nullable|string|min:3|max:20',
             'name' => 'required|string|min:3|max:200',
             'description' => 'required|string|min:3|max:300',
             'image' => 'required|image',
@@ -90,9 +90,11 @@ class ProductController extends Controller
         $filter = request()->has('filter') ? request()->filter : 'all';
 
 
-        if ($filter == "all")
-            $products = $this->model_instance::all();
-        else
+        if ($filter == "all") {
+            $products = Product::where('status', 'active')
+                ->inRandomOrder()
+                ->get();
+        } else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
 
@@ -172,7 +174,7 @@ class ProductController extends Controller
         $product = $this->model_instance::findOrFail($id);
         $relatedProducts = Product::whereNotIn('id', [$product->id])
             ->inRandomOrder()
-            ->limit(3)
+            ->limit(10)
             ->get();
         return view($this->show_view, compact('product', 'relatedProducts'));
     }
@@ -381,14 +383,14 @@ class ProductController extends Controller
     {
 
         // has_access('product_remozve');
-            $deleted = $this->model_instance::findOrFail($id)->delete();
-            if ($deleted) {
-                $log_message = trans('products.delete_log') . '#' . $id;
-                UserActivity::logActivity($log_message);
-                return redirect()->route($this->index_route)->with('success', $this->update_error_message);
-            } else {
-                return redirect()->route($this->index_route)->with('error', $this->update_error_message);
-            }
+        $deleted = $this->model_instance::findOrFail($id)->delete();
+        if ($deleted) {
+            $log_message = trans('products.delete_log') . '#' . $id;
+            UserActivity::logActivity($log_message);
+            return redirect()->route($this->index_route)->with('success', $this->update_error_message);
+        } else {
+            return redirect()->route($this->index_route)->with('error', $this->update_error_message);
+        }
     }
 
     public function search(Request $request)
