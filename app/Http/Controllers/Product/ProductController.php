@@ -95,7 +95,6 @@ class ProductController extends Controller
         } else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
-
         $categories = Category::where('status', '=', 'active')->get();
 
         return view($this->index_view, compact(['products', 'categories', 'filter']));
