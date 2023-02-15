@@ -379,7 +379,6 @@ class ProductController extends Controller
     {
 
         // has_access('product_remozve');
-        return $request;
         if ($request->ajax()) {
             $deleted = $this->model_instance::findOrFail($id)->delete();
             if ($deleted) {

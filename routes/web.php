@@ -36,12 +36,8 @@ Route::get('/backoffice', function () {
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
-
 //Dashboard Routes
-//, 'middleware' => ['auth', 'verified']
-Route::group(['prefix' => 'backoffice'], function () {
+Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard.index');
@@ -87,7 +83,3 @@ Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 //------------- End ContactUs -------------
 
-Route::get('/product', function ()
-{
-    return view('products.index');
-});

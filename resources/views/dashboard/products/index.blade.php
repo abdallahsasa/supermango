@@ -44,9 +44,7 @@
                                         <a class="pe-2" href="{{route('dashboard.product.edit',$product->id)}}"> <i
                                                 class="fa fa-pencil"></i></a>
 
-                                        <a id="sweetalert-08" class="fa fa-trash-o text-danger"
-                                           href="{{route('dashboard.product.destroy',$product->id)}}"
-                                           aria-label="Try me! Example: A warning message, with a function attached to the 'Confirm'-button">
+                                        <a  class="fa fa-trash-o text-danger" onclick="event.preventDefault();deleteItem('{{ $product->id }}','{{ route('dashboard.product.destroy',$product->id) }}')">
                                         </a>
                                     </td>
 
@@ -60,3 +58,43 @@
         </div>
     </div>
 @endsection
+<script>
+    function deleteItem(id,url) {
+        console.log(url)
+        swal({
+            title: 'are you sure ?',
+            type: "warning",
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "yes",
+            cancelButtonText: "no",
+            showCancelButton: true,
+            closeOnConfirm: true,
+            showLoaderOnConfirm: true
+        }, function () {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {_token: '{!! csrf_token() !!}', _method : 'delete' },
+                success: function (){
+                console.log("it Works");},
+                error: function (){console.log("error");},
+            })
+                .done(function() {
+                    swal({title: "{!! trans('done') !!}", text: "{!! trans('deleted_successfully') !!}", type: "success"},
+                        function(){
+                            console.log('sdadsadasd')
+                            location.reload();
+                        }
+                    );
+                })
+
+                .fail(function(e) {
+                    console.log('sdadsadasd')
+                    swal("{!! trans('fail') !!}",e.responseJSON.message, "error")
+                })
+        });
+
+    }
+
+</script>

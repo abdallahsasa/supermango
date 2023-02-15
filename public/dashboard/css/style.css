@@ -24459,7 +24459,7 @@ ul.list-unstyled li {
 .search .search-btn {
   display: block;
   height: 20px;
-  line-height: 68px;
+  line-height: 20px;
   position: relative;
   text-indent: -9999px;
   width: 14px;
