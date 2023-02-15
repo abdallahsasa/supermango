@@ -47,7 +47,16 @@
                     <div class="sb-product-description sb-mb-90">
                         <div class="sb-price-frame sb-mb-30">
                             <h3>{{$product->name}}</h3>
-                            <div class="sb-price"><sub>{{$product->currency}}</sub> {{$product->prices[0]['price']}}
+                            <div class="sb-price">
+                                @foreach($product->prices as $price)
+                                    @if($price->size=='Regular')
+                                    {{$price->price}}
+                                    @else
+                                        {{$price->price}}
+                                    @break
+                                    @endif
+                                @endforeach
+                                    <sub>{{$product->currency}}</sub>
                             </div>
                         </div>
                         <ul class="sb-stars sb-mb-25">

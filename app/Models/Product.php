@@ -28,6 +28,11 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductPrices');
     }
+    public function regularprice()
+    {
+        $regularprice  = ProductPrices::where(['product_id ' => $this->getKey(),'size'=> 'Regular']);
+        return $regularprice;
+    }
     public function attributes()
     {
         return $this->belongsToMany('App\Models\Attribute')->withPivot('values');
