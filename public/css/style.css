@@ -3287,8 +3287,8 @@ tabs
 
 .sb-tab .sb-list {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, 100%);
+    grid-template-rows: repeat(5, auto);
     grid-auto-flow: column;
     grid-column-gap: 30px;
 }
@@ -5147,3 +5147,9 @@ illustration 9
     background-color: #00CCBC!important;
 }
 /*# sourceMappingURL=style.css.map */
+.product-banner{
+    background: url('https://moreandmore-kw.com/img/gallery/juice-background.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

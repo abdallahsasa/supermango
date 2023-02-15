@@ -30,7 +30,16 @@
                                 </div>
                                 <div class="sb-card-tp">
                                     <h4 class="sb-card-title">{{$product->name}}</h4>
-                                    <div class="sb-price"> {{$product->prices[0]['price']}}
+                                    <div class="sb-price">
+                                        @foreach($product->prices as $price)
+                                            @if($price->size=='Regular')
+                                                {{$price->price}}
+                                                @break
+                                            @else
+                                                {{$price->price}}
+                                                @break
+                                            @endif
+                                        @endforeach
                                         <sub>{{$product->currency}}</sub></div>
                                 </div>
                                 <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"

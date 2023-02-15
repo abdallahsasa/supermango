@@ -9,5 +9,4 @@ class ProductPrices extends Model
 {
     use HasFactory;
     protected $fillable = array('size','product_id','price','description','type');
-
 }
