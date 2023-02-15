@@ -56,11 +56,10 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
-                            <li><span>(4 ratings)</span></li>
                         </ul>
                         <div class="sb-text sb-mb-30">{!!$product->description!!}</div>
 
-                        <div class="row">
+                        <div style="display:none;" class="row">
                             <div class="col-lg-4">
                                 <div class="sb-features-item sb-features-item-sm sb-mb-30">
                                     <div class="sb-number">01</div>
@@ -89,33 +88,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="sb-masonry-grid sb-tabs" style="position: relative; height: 299px;">
+                            <div class="sb-grid-sizer" style="position: absolute; display: none;"></div>
+                            <div class="sb-grid-item sb-ingredients-tab"
+                                 style="position: absolute; left: 0%; top: 0px;">
+                                <div class="sb-tab">
+                                    <ul class="sb-list">
+                                        @foreach($product->prices as $prod)
+                                            <li>
+                                                <b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- filter -->
-            <div class="sb-filter">
-                <a href="#." data-filter=".sb-ingredients-tab" class="sb-filter-link sb-active">Small,
-                    Medium, or Large:
-                    Choose Your Juice Size</a>
-            </div>
-            <!-- filter end -->
-            <div class="sb-masonry-grid sb-tabs" style="position: relative; height: 299px;">
-                <div class="sb-grid-sizer" style="position: absolute; display: none;"></div>
-                <div class="sb-grid-item sb-ingredients-tab"
-                     style="position: absolute; left: 0%; top: 0px;">
-                    <div class="sb-tab">
-                        <ul class="sb-list">
-                            @foreach($product->prices as $prod)
-                                <li>
-                                    <b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
 
-            </div>
+
+
         </div>
     </section>
     <!-- product end -->
