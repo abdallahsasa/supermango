@@ -15,6 +15,16 @@
     </div>
     <div class="row">
         <div class="col-xl-12 mb-30">
+            @if(session()->get('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
+            @if(session()->get('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -41,11 +51,16 @@
                                     </td>
                                     <td class="tr-image"><img class="image-20" src="{{$product->image_url}}"></td>
                                     <td>
+                                        <div class="row ">
                                         <a class="pe-2" href="{{route('dashboard.product.edit',$product->id)}}"> <i
                                                 class="fa fa-pencil"></i></a>
-
-                                        <a  class="fa fa-trash-o text-danger" onclick="event.preventDefault();deleteItem('{{ $product->id }}','{{ route('dashboard.product.destroy',$product->id) }}')">
-                                        </a>
+                                     <form method="POST" action="{{route('dashboard.product.destroy',$product->id)}}">
+                                         @csrf
+                                         @method('DELETE')
+                                        <button  class="fa fa-trash-o text-danger" onclick="return confirm('Are you sure you want to delete this {{$product->name}} ')">
+                                        </button>
+                                     </form>
+                                        </div>
                                     </td>
 
                                 </tr>
@@ -58,43 +73,4 @@
         </div>
     </div>
 @endsection
-<script>
-    function deleteItem(id,url) {
-        console.log(url)
-        swal({
-            title: 'are you sure ?',
-            type: "warning",
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "yes",
-            cancelButtonText: "no",
-            showCancelButton: true,
-            closeOnConfirm: true,
-            showLoaderOnConfirm: true
-        }, function () {
-            $.ajax({
-                url: url,
-                type: 'POST',
-                dataType: 'JSON',
-                data: {_token: '{!! csrf_token() !!}', _method : 'delete' },
-                success: function (){
-                console.log("it Works");},
-                error: function (){console.log("error");},
-            })
-                .done(function() {
-                    swal({title: "{!! trans('done') !!}", text: "{!! trans('deleted_successfully') !!}", type: "success"},
-                        function(){
-                            console.log('sdadsadasd')
-                            location.reload();
-                        }
-                    );
-                })
 
-                .fail(function(e) {
-                    console.log('sdadsadasd')
-                    swal("{!! trans('fail') !!}",e.responseJSON.message, "error")
-                })
-        });
-
-    }
-
-</script>

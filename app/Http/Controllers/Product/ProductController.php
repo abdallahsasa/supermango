@@ -43,6 +43,8 @@ class ProductController extends Controller
         $this->index_route = 'dashboard.product.index';
         $this->create_route = 'product.create';
         $this->success_message = 'Product Added successfully';
+        $this->delete_message = 'Product deleted successfully';
+        $this->error = 'Something went Wrong';
         $this->update_success_message = 'Product Updated successfully';
         $this->error_message = "Product Couldn't be Added";
         $this->update_error_message = "Product Couldn't Been Updated";
@@ -379,19 +381,14 @@ class ProductController extends Controller
     {
 
         // has_access('product_remozve');
-        if ($request->ajax()) {
             $deleted = $this->model_instance::findOrFail($id)->delete();
             if ($deleted) {
                 $log_message = trans('products.delete_log') . '#' . $id;
                 UserActivity::logActivity($log_message);
-                return response()->json(['status' => 'success', 'message' => 'deleted_successfully']);
+                return redirect()->route($this->index_route)->with('success', $this->update_error_message);
             } else {
-                return response()->json(['status' => 'fail', 'message' => 'fail_while_delete']);
+                return redirect()->route($this->index_route)->with('error', $this->update_error_message);
             }
-
-        }
-
-        return redirect()->route($this->index_route);
     }
 
     public function search(Request $request)
