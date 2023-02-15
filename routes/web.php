@@ -73,9 +73,8 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 
 });
 //FrontEnd Routes
-Route::get('/', [FrontendController::class, 'soon'])->name('home.product.index');
-Route::get('/home', [FrontendController::class, 'index'])->name('home.product.index');
-Route::get('/soon', [FrontendController::class, 'soon'])->name('home.product.soon');
+Route::get('/', [FrontendController::class, 'index'])->name('home.product.index');
+
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
 
 //------------- ContactUs -------------

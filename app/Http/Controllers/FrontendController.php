@@ -32,7 +32,7 @@ class FrontendController extends Controller
 
         if ($filter == "all")
             $products = Product::where('status', '=', 'active')
-                ->orderBy('created_at', 'desc')
+                ->inRandomOrder()
                 ->get();
         else
             $products = Category::findOrFail($filter)->products()->latest()->get();

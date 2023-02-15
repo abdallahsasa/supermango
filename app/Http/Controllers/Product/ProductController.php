@@ -91,9 +91,7 @@ class ProductController extends Controller
 
 
         if ($filter == "all") {
-            $products = Product::where('status', 'active')
-                ->inRandomOrder()
-                ->get();
+            $products = Product::all();
         } else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
