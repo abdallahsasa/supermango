@@ -51,6 +51,7 @@
                                 @foreach($product->prices as $price)
                                     @if($price->size=='Regular')
                                     {{$price->price}}
+                                        @break
                                     @else
                                         {{$price->price}}
                                     @break

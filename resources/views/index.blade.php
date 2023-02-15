@@ -34,11 +34,11 @@
                                         @foreach($product->prices as $price)
                                             @if($price->size=='Regular')
                                                 {{$price->price}}
+                                                @break
                                             @else
                                                 {{$price->price}}
                                                 @break
                                             @endif
-                                        @endforeach
                                         <sub>{{$product->currency}}</sub></div>
                                 </div>
                                 <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
