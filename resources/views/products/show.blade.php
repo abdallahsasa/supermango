@@ -2,14 +2,14 @@
 @section('content')
 
     <!-- banner -->
-    <section class="sb-banner sb-banner-xs sb-banner-color">
+    <section class="sb-banner sb-banner-xs product-banner">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- main title -->
                     <div class="sb-main-title-frame">
                         <div class="sb-main-title">
-                            <h1 class="sb-h2">Online Menu</h1>
+                            <h1 class="sb-h2">More & More Juices</h1>
                             <ul class="sb-breadcrumbs">
                                 <li><a href="/">Home</a></li>
 

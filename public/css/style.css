@@ -5147,3 +5147,9 @@ illustration 9
     background-color: #00CCBC!important;
 }
 /*# sourceMappingURL=style.css.map */
+.product-banner{
+    background: url('http://127.0.0.1:8000/img/gallery/juice-background.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
