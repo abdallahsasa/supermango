@@ -8,7 +8,7 @@
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#F5C332">
     <!-- favicon  -->
-    <link rel="shortcut icon" href="{{asset('img/ui/logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('img/ui/white-logo.png')}}" type="image/x-icon">
     <!-- font awesome css -->
     <link rel="stylesheet" href="{{asset('css/plugins/font-awesome.min.css')}}">
     <!-- bootstrap css -->
