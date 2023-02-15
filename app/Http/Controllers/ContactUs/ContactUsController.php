@@ -25,9 +25,9 @@ class ContactUsController extends Controller
         $this->edit_variation_view = 'dashboard.products.edit_variation';
         $this->index_route = 'dashboard.product.index';
         $this->create_route = 'product.create';
-        $this->success_message = 'Thank You For Contacting Us Your ContactUs Has Received';
+        $this->success_message = 'Thank You For Contacting Us Your Message Has Received';
         $this->update_success_message = trans('admin.update_created_successfully');
-        $this->error_message = "Your ContactUs Couldn't Be Send" ;
+        $this->error_message = "Your Message Couldn't Be Send" ;
         $this->update_error_message = trans('admin.fail_while_update');
         $this->model_instance = ContactUs::class;
     }
@@ -65,7 +65,7 @@ class ContactUsController extends Controller
         ]);
         try {
             $object = $this->model_instance::create($request);
-            $log_message = trans('products.create_log') . '#' . $object->id;
+            $log_message = trans('messages.create_log') . '#' . $object->id;
             //UserActivity::logActivity($log_message);
             return redirect()->back()->with('success', $this->success_message);
         }
