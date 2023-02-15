@@ -39,6 +39,7 @@
                                                 {{$price->price}}
                                                 @break
                                             @endif
+                                        @endforeach
                                         <sub>{{$product->currency}}</sub></div>
                                 </div>
                                 <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
