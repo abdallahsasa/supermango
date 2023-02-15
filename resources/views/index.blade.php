@@ -43,7 +43,7 @@
                                         <sub>{{$product->currency}}</sub></div>
                                 </div>
                                 <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
-                                   class="sb-btn sb-ppc" target="_blank">
+                                   class="sb-btn sb-ppc">
                       <span class="sb-icon">
                         <img src="img/ui/icons/search.svg" alt="icon">
                       </span><span>View sizes</span></a>
