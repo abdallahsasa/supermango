@@ -54,7 +54,7 @@
 <div class="sb-load"></div>
 
 
-@extends('layouts.header')
+@include('layouts.header')
 <div class="sb-app">
     <!-- dynamic content -->
     <div id="sb-dynamic-content" class="sb-transition-fade">
@@ -126,7 +126,7 @@
 
 </div>
 </body>
-@extends('layouts.footer')
+@include('layouts.footer')
 </html>
 
 
