@@ -25,6 +25,7 @@
                             <th>Email</th>
                             <th>Phone </th>
                             <th>Message </th>
+                            <th>Date </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                                 <td>{{$message->email}}</td>
                                 <td>{{$message->number}}</td>
                                 <td>{{$message->message}}</td>
+                                <td>{{$message->created_at}}</td>
                             </tr>
                         @endforeach
                         </tbody>

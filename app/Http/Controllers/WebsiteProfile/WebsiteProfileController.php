@@ -75,7 +75,7 @@ class WebsiteProfileController extends Controller
         $validated_data = $request->validate([
             'location' => 'required|string|min:3|max:200',
             'email' => 'required|email',
-            'number' => 'required|digits:10',
+            'number' => 'required|digits',
             'facebook' => 'string|min:3|max:200',
             'instagram' => 'string|min:3|max:200',
             'snapchat' => 'string|min:3|max:200',
