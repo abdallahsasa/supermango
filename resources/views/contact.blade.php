@@ -130,7 +130,7 @@
                         <div class="sb-number">01</div>
                         <div class="sb-feature-text">
                             <h3 class="sb-mb-15">Welcome</h3>
-                            <p class="sb-text">Montréal, 1510 Rue Sauvé</p>
+                            <p class="sb-text">{{$websiteContactData->location}}</p>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                         <div class="sb-number">02</div>
                         <div class="sb-feature-text">
                             <h3 class="sb-mb-15">Call</h3>
-                            <p class="sb-text">99661090 - 99661080</p>
+                            <p class="sb-text">{{$websiteContactData->number}}</p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                         <div class="sb-number">03</div>
                         <div class="sb-feature-text">
                             <h3 class="sb-mb-15">Write</h3>
-                            <p class="sb-text">Info@moreandmore-kw.com</p>
+                            <p class="sb-text">{{$websiteContactData->email}}</p>
                         </div>
                     </div>
                 </div>

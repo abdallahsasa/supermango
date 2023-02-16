@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ContactUs;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactUs;
+use App\Models\WebsiteProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -39,14 +40,13 @@ class ContactUsController extends Controller
     public function index()
     {
         $messages = ContactUs::all();
-
         return view('/dashboard.contact-us.index',compact('messages'));
     }
 
     function create()
     {
-
-        return view('/contact');
+        $websiteContactData=WebsiteProfile::all()->first();
+        return view('/contact',compact('websiteContactData'));
     }
 
     /**

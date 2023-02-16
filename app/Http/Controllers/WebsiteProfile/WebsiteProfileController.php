@@ -32,8 +32,7 @@ class WebsiteProfileController extends Controller
     public function index()
     {
         $data=WebsiteProfile::all()->first();
-        if(is_null($data))
-        return view($this->index_view,compact(['categories']));
+        return view($this->index_view,compact(['data']));
     }
 
     /**
@@ -75,7 +74,7 @@ class WebsiteProfileController extends Controller
         $validated_data = $request->validate([
             'location' => 'required|string|min:3|max:200',
             'email' => 'required|email',
-            'number' => 'required|digits',
+            'number' => 'required',
             'facebook' => 'string|min:3|max:200',
             'instagram' => 'string|min:3|max:200',
             'snapchat' => 'string|min:3|max:200',
