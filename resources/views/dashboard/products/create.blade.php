@@ -88,7 +88,7 @@
                                                     <option value="Regular">Regular</option>
                                                     <option value="Large">Large</option>
                                                     <option value="1 Liter">1 Liter</option>
-                                                    <option value="2 Liter">1,5 Liter</option>
+                                                    <option value="1,5 Liter">1,5 Liter</option>
                                                     <option value="2 Liter">2 Liter</option>
                                                 </select>
                                             </div>

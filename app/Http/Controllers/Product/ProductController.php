@@ -56,7 +56,7 @@ class ProductController extends Controller
         return [
             'sku' => 'nullable|string|min:3|max:20',
             'name' => 'required|string|min:3|max:200',
-            'description' => 'required|string|min:3|max:300',
+            'description' => 'required|string|min:3|max:1000',
             'image' => 'required|image',
             'image.*' => 'image|mimes:jpg,jpeg,png',
             'category_id' => 'nullable|exists:categories,id',
