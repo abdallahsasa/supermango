@@ -85,7 +85,14 @@
                                         <div class="row mb-20">
                                             <div class="col-md-4">
                                                 <label class="form-label" for="inputAddress5">Size</label>
-                                                <input required name="size" type="text" class="form-control" id="size" placeholder="Enter Product Size">
+                                                <select required name="size" class="form-select form-select-md mb-3" id="size">
+                                                    <option value="" disabled selected>Size</option>
+                                                    <option value="Small">Small</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Large">Large</option>
+                                                    <option value="1 Liter">1 Liter</option>
+                                                    <option value="2 Liter">2 Liter</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="form-label" for="inputAddress5">Price</label>
