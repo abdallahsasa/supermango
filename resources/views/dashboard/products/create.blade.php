@@ -85,7 +85,7 @@
                                         <div class="row mb-20">
                                             <div class="col-md-4">
                                                 <label class="form-label" for="inputAddress5">Size</label>
-                                                <select required name="size" class="form-select form-select-md mb-3" id="size">
+                                                <select required name="size" class="form-select form-select-lg " id="size" style="padding-top: 0.6rem;padding-bottom: 0.7rem;">
                                                     <option value="" disabled selected>Size</option>
                                                     <option value="Small">Small</option>
                                                     <option value="Regular">Regular</option>
