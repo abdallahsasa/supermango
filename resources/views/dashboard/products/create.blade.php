@@ -34,7 +34,7 @@
                             <label class="form-label" for="exampleFormControlSelect1">Category Name</label>
                             <select required name="category_id" class="form-select form-select-lg mb-3" id="exampleFormControlSelect1">
                                 @foreach($categories as $category)
-                                    <option value="" disabled selected>Category</option>
+                                    <option selected >Category</option>
                                     <option value="{{$category->id}} {{old('category_id')}}">{{$category->name}}</option>
 
                                 @endforeach
