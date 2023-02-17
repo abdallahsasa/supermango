@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <!-- banner -->
     <section class="sb-banner sb-banner-xs product-banner">
         <div class="container">
@@ -68,7 +67,6 @@
                             <li><i class="fas fa-star"></i></li>
                         </ul>
                         <div class="sb-text sb-mb-30">{!!$product->description!!}</div>
-
                         <div style="display:none;" class="row">
                             <div class="col-lg-4">
                                 <div class="sb-features-item sb-features-item-sm sb-mb-30">
@@ -112,18 +110,13 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </section>
     <!-- product end -->
-
     <section class="sb-short-menu sb-p-0-90">
         <div class="container">
             <div class="sb-group-title sb-mb-30">
@@ -160,12 +153,10 @@
                                         <sub>{{$rproduct->currency}}</sub> {{$rproduct->prices[0]['price']}}</div>
                                 </div>
                             </div>
-
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
-
 @endsection

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <section class="sb-menu-section sb-p-90-60">
         <div class="sb-bg-1">
             <div></div>
@@ -47,16 +46,12 @@
                       <span class="sb-icon">
                         <img src="img/ui/icons/search.svg" alt="icon">
                       </span><span>View sizes</span></a>
-
                             </a>
                         </div>
                     @endforeach
-
                 @endif
             </div>
-
         </div>
     </section>
     <!-- menu end -->
-
 @endsection

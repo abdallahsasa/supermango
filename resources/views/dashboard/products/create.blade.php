@@ -1,6 +1,5 @@
 @extends('dashboard.layouts.app')
 @section('content')
-
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">
@@ -36,7 +35,6 @@
                                 @foreach($categories as $category)
                                     <option selected >Category</option>
                                     <option value="{{$category->id}} {{old('category_id')}}">{{$category->name}}</option>
-
                                 @endforeach
                             </select>
                             @if($errors->has('category_id'))
@@ -75,7 +73,6 @@
                                         </div>
                                     @endif
                         </div>
-
                         <div class="mb-3">
                             <h4 class="form-label">Product Prices</h4>
                         </div>
@@ -110,7 +107,6 @@
                                     <input  class="button" data-repeater-create="" type="button" value="Add Product Price">
                                 </div>
                             </div>
-
                         <div class="mb-3">
                             <label class="form-label d-block" for="exampleFormControlFile1">Product Image</label>
                             <input required name="image" type="file" class="form-control"  id="customFile" value="{{old('image')}}">
@@ -120,14 +116,10 @@
                                 </div>
                             @endif
                         </div>
-
                         <button type="submit" class="btn btn-primary">Submit</button>
-
                     </form>
                 </div>
             </div>
-
         </div>
-
     </div>
 @endsection

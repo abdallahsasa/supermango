@@ -1,16 +1,13 @@
 @extends('layouts.app')
 @section('content')
-
     <!-- banner -->
     <section class="sb-banner sb-banner-color">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-
                     <!-- main title -->
                     <div class="sb-main-title-frame">
                         <div class="sb-main-title">
-
                             <span class="sb-suptitle sb-mb-30">Contact</span>
                             <h1 class="sb-mb-30">Get in <span>Touch with More & More</span></h1>
                             <p class="sb-text sb-text-lg sb-mb-30">We will respond within 24 hours.</p>
@@ -75,7 +72,6 @@
                                                 {{ $errors->first('message') }}
                                             </div>
                                         @endif
-
                                     </div>
                                     @if(session()->get('error'))
                                         <div class="alert alert-danger" role="alert">
@@ -90,11 +86,10 @@
                                     <p class="sb-text sb-text-xs sb-mb-30">*We promise not to disclose your <br>personal
                                         information to third parties.</p>
                                     <!-- button -->
-
                                     <button class="sb-btn sb-cf-submit sb-show-success">
-                                                                    <span class="sb-icon">
-                                                                      <img src="img/ui/icons/arrow.svg" alt="icon">
-                                                                    </span>
+                                        <span class="sb-icon">
+                                            <img src="img/ui/icons/arrow.svg" alt="icon">
+                                        </span>
                                         <span>Send</span>
                                     </button>
                                     <!-- button end -->
@@ -108,9 +103,7 @@
                                 <a href="home-1.html" class="sb-btn sb-btn-2">
                       <span class="sb-icon">
                         <img src="img/ui/icons/arrow-2.svg" alt="icon">
-                      </span>
-                                    <span>Back to home</span>
-                                </a>
+                      </span><span>Back to home</span></a>
                                 <!-- button end -->
                             </div>
                         </div>
@@ -120,7 +113,6 @@
         </div>
     </section>
     <!-- banner end -->
-
     <!-- contact info -->
     <section class="sb-p-90-30">
         <div class="container">
@@ -156,13 +148,11 @@
         </div>
     </section>
     <!-- contact info end -->
-
     <!-- map -->
     <div style="display: none;" class="sb-map-frame">
         <div id="map" class="sb-map"></div>
         <div class="sb-lock"><i class="fas fa-lock"></i></div>
     </div>
     <!-- map end -->
-
 @endsection
 
