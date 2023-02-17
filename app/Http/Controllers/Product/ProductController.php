@@ -91,7 +91,7 @@ class ProductController extends Controller
 
 
         if ($filter == "all") {
-            $products = Product::all();
+            $products = Product::all()->sortByDesc('id');
         } else
             $products = Category::findOrFail($filter)->products()->latest()->get();
 
