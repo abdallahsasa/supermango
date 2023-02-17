@@ -31,6 +31,7 @@
                         <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>SKU</th>
                                 <th>Name</th>
                                 <th>Category</th>
@@ -42,6 +43,7 @@
                             <tbody>
                             @foreach($products as $product )
                                 <tr>
+                                    <td>{{$product->id}}</td>
                                     <td>{{$product->sku}}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->category->name}}</td>
