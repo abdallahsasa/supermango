@@ -54,7 +54,7 @@ class ProductController extends Controller
     private function StoreValidationRules()
     {
         return [
-            'sku' => 'nullable|string|min:3|max:20',
+            'sku' => 'nullable|string|min:3|max:30',
             'name' => 'required|string|min:3|max:200',
             'description' => 'required|string|min:3|max:1000',
             'image' => 'required|image',
