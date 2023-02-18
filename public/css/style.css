@@ -3003,7 +3003,7 @@ filter
     background-color: #F2F3F5;
     transition: 0.3s ease-in-out;
     color: #6F6F87;
-}
+    margin-top: 1%;}
 
 .sb-filter .sb-filter-link:last-child {
     margin-right: 0;
