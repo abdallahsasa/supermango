@@ -57,6 +57,8 @@
 @include('layouts.header')
 <div class="sb-app">
     <!-- dynamic content -->
+    <!-- Back to top button -->
+    <a id="backbutton"></a>
     <div id="sb-dynamic-content" class="sb-transition-fade">
         @yield('content')
         <section class="sb-p-0-60">

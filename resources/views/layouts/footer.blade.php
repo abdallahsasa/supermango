@@ -34,5 +34,21 @@
     <script src="{{asset('js/plugins/fancybox.min.js')}}"></script>
     <!-- starbelly js -->
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        var btn = $('#backbutton');
 
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 30) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+
+        btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+        });
+
+    </script>
 </footer>
