@@ -74,6 +74,7 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 });
 //FrontEnd Routes
 Route::get('/', [FrontendController::class, 'index'])->name('home.product.index');
+Route::get('/menu', [FrontendController::class, 'menu'])->name('home.product.menu');
 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
 

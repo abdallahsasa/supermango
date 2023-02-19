@@ -1,56 +1,111 @@
 @extends('layouts.app')
 @section('content')
-    <section class="sb-menu-section sb-p-90-60">
-        <div class="sb-bg-1">
-            <div></div>
-        </div>
+    <section class="sb-p-60-60" style="padding-top: 150px!important;">
         <div class="container">
-            <!-- filter -->
-            <div class="sb-filter mb-30">
-                <a href="#." data-filter="*" class="sb-filter-link sb-active">All </a>
+            <div class="sb-group-title sb-mb-30">
+                <div class="sb-left sb-mb-30">
+                    <h2 class="sb-mb-30">What do you <span>like today?</span></h2>
+                    <p class="sb-text">Discover Our Categories</p>
+                </div>
+                <div class="sb-right sb-mb-30">
+                    <!-- button -->
+                    <a href="/menu" class="sb-btn sb-m-0">
+                <span class="sb-icon">
+                  <img src="img/ui/icons/arrow.svg" alt="icon">
+                </span>
+                        <span>View Full Menu</span>
+                    </a>
+                    <!-- button end -->
+                </div>
+            </div>
+            <div class="row">
                 @if(isset($categories))
                     @foreach($categories as $category)
-                        <a href="#." data-filter=".{{str_replace(' ', '', $category->name)}}"
-                           class="sb-filter-link">{{$category->name}}</a>
-                    @endforeach
-                @endif
-
-            </div>
-            <!-- filter end -->
-            <div class="sb-masonry-grid">
-                <div class="sb-grid-sizer"></div>
-                @if(isset($products))
-                    @foreach($products as $product)
-                        <div class="sb-grid-item sb-item-25 {{str_replace(' ', '', $product->category->name)}}">
-                            <a data-fancybox="menu" data-no-swup href="{{$product->image_url}}"
-                               class="sb-menu-item sb-mb-2">
-                                <div class="sb-cover-frame">
-                                    <img src="{{$product->image_url}}" alt="{{$product->image_name}}">
+                        <div class="col-lg-3">
+                            <a href="" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                                <div class="sb-card-body">
+                                    <div class="sb-category-icon">
+                                        <img src="{{asset('img/categories/3.png')}}" alt="icon">
+                                    </div>
+                                    <div class="sb-card-descr">
+                                        <h3 class="sb-mb-10">{{$category->name}}</h3>
+                                        <p style="display:none;" class="sb-text">{{$category->description}}</p>
+                                    </div>
                                 </div>
-                                <div class="sb-card-tp">
-                                    <h4 class="sb-card-title">{{$product->name}}</h4>
-                                    <div class="sb-price">
-                                        @foreach($product->prices as $price)
-                                            @if($price->size=='Regular')
-                                                {{$price->price}}
-                                                @break
-                                            @else
-                                                {{$price->price}}
-                                                @break
-                                            @endif
-                                        @endforeach
-                                        <sub>{{$product->currency}}</sub></div>
-                                </div>
-                                <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
-                                   class="sb-btn sb-ppc">
-                      <span class="sb-icon">
-                        <img src="img/ui/icons/search.svg" alt="icon">
-                      </span><span>View sizes</span></a>
                             </a>
                         </div>
                     @endforeach
                 @endif
             </div>
+            <section class="sb-short-menu sb-p-0-90">
+                <div class="sb-bg-2">
+                    <div></div>
+                </div>
+                <div class="container">
+                    <div class="sb-group-title sb-mb-30">
+                        <div class="sb-left sb-mb-30">
+                            <h2 class="sb-mb-30">Most <span>popular</span></h2>
+                        </div>
+                        <div class="sb-right sb-mb-30">
+                            <!-- slider navigation -->
+                            <div class="sb-slider-nav">
+                                <div class="sb-prev-btn sb-short-menu-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"><i class="fas fa-arrow-left"></i></div>
+                                <div class="sb-next-btn sb-short-menu-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                            <!-- slider navigation end -->
+                            <!-- button -->
+                            <a href="/menu" class="sb-btn">
+                <span class="sb-icon">
+                  <img src="img/ui/icons/menu.svg" alt="icon">
+                </span>
+                                <span>Full menu</span>
+                            </a>
+                            <!-- button end -->
+                        </div>
+                    </div>
+                    <div class="swiper-container sb-short-menu-slider-4i swiper-container-horizontal">
+                        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                            @if(isset($products))
+                                @foreach($products as $product)
+                            <div class="swiper-slide swiper-slide-active" style="width: 330px; margin-right: 30px;">
+                                <a data-fancybox="menu" data-no-swup="" href="{{$product->image_url}}" class="sb-menu-item">
+                                    <div class="sb-cover-frame">
+                                        <img src="{{$product->image_url}}" alt="product">
+                                    </div>
+                                    <div class="sb-card-tp">
+                                        <h4 class="sb-card-title">{{$product->name}}</h4>
+                                        <div class="sb-price">
+                                            @foreach($product->prices as $price)
+                                                @if($price->size=='Regular')
+                                                    {{$price->price}}
+                                                    @break
+                                                @else
+                                                    {{$price->price}}
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                            <sub>{{$product->currency}}</sub>
+                                        </div>
+                                    </div>
+                                    <div class="sb-description">
+                                        <p class="sb-text sb-mb-15"> <span>{!! $product->description !!}</span></p>
+
+                                    </div>
+                                </a>
+                                <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
+                                   class="sb-btn sb-ppc">
+                      <span class="sb-icon">
+                        <img src="img/ui/icons/search.svg" alt="icon">
+                      </span><span>View sizes</span></a>
+                                </a>
+                            </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
+            </section>
+
         </div>
     </section>
     <!-- menu end -->
