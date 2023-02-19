@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="sb-p-60-60" style="padding-top: 150px!important;">
+    <section class="sb-p-60-30" style="padding-top: 150px!important;">
         <div class="container">
             <div class="sb-group-title sb-mb-30">
                 <div class="sb-left sb-mb-30">
