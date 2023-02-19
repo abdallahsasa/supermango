@@ -21,7 +21,7 @@
             <div class="row">
                 @if(isset($categories))
                     @foreach($categories as $category)
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <a href="" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                                 <div class="sb-card-body">
                                     <div class="sb-category-icon">
