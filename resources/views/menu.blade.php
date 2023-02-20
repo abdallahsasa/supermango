@@ -10,14 +10,20 @@
                 <a href="#." data-filter="*" class="sb-filter-link sb-active">All </a>
                 @if(isset($categories))
                     @foreach($categories as $category)
-                        <a href="#." data-filter=".{{str_replace(' ', '', $category->name)}}"
+                        <a href="#." id="scroll" data-filter=".{{str_replace(' ', '', $category->name)}}"
                            class="sb-filter-link">{{$category->name}}</a>
                     @endforeach
                 @endif
-
             </div>
+            <script>
+                $("scroll").click(function() {
+                    $('html,body').animate({
+                            scrollTop: $("#main").offset().top},
+                        'slow');
+                });
+            </script>
             <!-- filter end -->
-            <div class="sb-masonry-grid">
+            <div class="sb-masonry-grid" id="main">
                 <div class="sb-grid-sizer"></div>
                 @if(isset($products))
                     @foreach($products as $product)
