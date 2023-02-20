@@ -22,13 +22,13 @@
                 @if(isset($categories))
                     @foreach($categories as $category)
                         <div class="col-lg-4">
-                            <a href="" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                            <a href="/menu" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                                 <div class="sb-card-body">
                                     <div class="sb-category-icon">
                                         <img src="{{$category->image_url}}" alt="icon">
                                     </div>
                                     <div class="sb-card-descr">
-                                        <h3 class="sb-mb-10">{{$category->name}}</h3>
+                                        <h3  style="text-align: right;" class="sb-mb-10">{{$category->name}}</h3>
                                         <p style="display:none;" class="sb-text">{{$category->description}}</p>
                                     </div>
                                 </div>

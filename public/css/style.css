@@ -3156,6 +3156,7 @@ categories
     width: 70px;
     height: 70px;
     margin-bottom: 0;
+    margin-left: 0;
 }
 
 .sb-categorie-card.sb-categorie-card-2 .sb-card-body .sb-category-icon:before {
