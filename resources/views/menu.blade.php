@@ -7,7 +7,7 @@
         <div class="container">
             <!-- filter -->
             <div class="sb-filter mb-30">
-                <a href="#." data-filter="*" class="sb-filter-link sb-active scroll">All </a>
+                <a href="#." STYLE="display: none;"  id="ALL" data-filter="*" class="sb-filter-link sb-active scroll">All </a>
                 @if(isset($categories))
                     @foreach($categories as $category)
                         <a href="#." id="{{str_replace(' ', '', $category->name)}}" data-filter=".{{str_replace(' ', '', $category->name)}}"

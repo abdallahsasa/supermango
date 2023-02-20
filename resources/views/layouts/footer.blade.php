@@ -55,7 +55,8 @@
                 'slow');
         });
 
-        @if(isset($categoryfilter))
+        @if(isset($categoryfilter) && $categoryfilter != "ALL")
+
         $(document).ready(function() {
         const link = document.getElementById("{{$categoryfilter}}");
         //console.log(link);
