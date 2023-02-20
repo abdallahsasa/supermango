@@ -49,7 +49,7 @@
             e.preventDefault();
             $('html, body').animate({scrollTop:0}, '300');
         });
-        $("scroll").click(function() {
+        $("#scroll").click(function() {
             $('html,body').animate({
                     scrollTop: $("#main").offset().top},
                 'slow');
