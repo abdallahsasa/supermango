@@ -440,7 +440,6 @@ $(function() {
     $('.sb-filter a').on('click', function() {
       $('.sb-filter .sb-active').removeClass('sb-active');
       $(this).addClass('sb-active');
-
       var selector = $(this).data('filter');
       $('.sb-masonry-grid').isotope({
         filter: selector

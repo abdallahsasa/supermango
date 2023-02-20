@@ -55,6 +55,19 @@ class FrontendController extends Controller
         $categories = Category::where('status', '=', 'active')->get();
         return view($this->menu_view, compact(['products', 'categories', 'filter']));
     }
+    public function filtermenu($categoryfilter)
+    {
+        $filter = request()->has('filter') ? request()->filter : 'all';
+
+        if ($filter == "all")
+            $products = Product::where('status', '=', 'active')
+                ->inRandomOrder()
+                ->get();
+        else
+            $products = Category::findOrFail($filter)->products()->latest()->get();
+        $categories = Category::where('status', '=', 'active')->get();
+        return view($this->menu_view, compact(['products', 'categories', 'filter','categoryfilter']));
+    }
     /**
      * Display Coming Soon Page.
      *

@@ -5198,3 +5198,6 @@ illustration 9
         margin: 30px;
     }
 }
+.hidden{
+    display: none!important;
+}
