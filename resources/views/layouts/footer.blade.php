@@ -51,14 +51,14 @@
         });
         $(".scroll").click(function() {
             $('html,body').animate({
-                    scrollTop: $("#main").offset().top},
+                    scrollTop: $("#main").offset().top-200},
                 'slow');
         });
 
         @if(isset($categoryfilter))
         $(document).ready(function() {
         const link = document.getElementById("{{$categoryfilter}}");
-        console.log(link);
+        //console.log(link);
         link.click();
         });
         @endif
