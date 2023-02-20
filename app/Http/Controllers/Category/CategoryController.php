@@ -20,6 +20,7 @@ class CategoryController extends Controller
         $this->edit_view = 'dashboard.categories.edit';
         $this->index_route = 'dashboard.category.index';
         $this->create_route = 'dashboard.category.create';
+        $this->edit_route = 'dashboard.category.edit';
         $this->success_message = 'Category Has Been Added Successfully';
         $this->update_success_message = trans('admin.update_created_successfully');
         $this->error_message = "Category Couldn't Been Added" ;
@@ -82,11 +83,11 @@ class CategoryController extends Controller
             $log_message = trans('categories.create_log') . '#' . $object->id;
             UserActivity::logActivity($log_message);
 
-            return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
+            return redirect()->route($this->edit_route, $object->id)->with('success', $this->success_message);
         } catch (\Exception $ex) {
 
             Log::error($ex->getMessage());
-            return redirect()->route($this->create_route)->with('error', $this->error_message);
+            return redirect()->route($this->edit_route)->with('error', $this->error_message);
         }
     }
 
@@ -109,7 +110,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category=Category::FindOrFail($id);
+        return view($this->edit_view,compact(['category']));
     }
 
     /**
@@ -121,7 +123,31 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validated_data = $request->validate($this->StoreValidationRules());
+        try {
+            $object=Category::FindOrFail($id);
+            $object->update(Arr::except($validated_data,['image']));
+
+            if ($request->has('image')) {
+                $image=$validated_data["image"];
+                $img_file_path = Storage::disk('public_images')->put('categories', $image);
+                $image_name=$request->file('image')->getClientOriginalName();
+                $image_url = getMediaUrl($img_file_path);
+                $object->image_url=$image_url;
+                $object->image_name=$image_name;
+                $object->update();
+            }
+
+            $log_message = trans('categories.create_log') . '#' . $object->id;
+            UserActivity::logActivity($log_message);
+
+            return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
+        } catch (\Exception $ex) {
+
+            Log::error($ex->getMessage());
+            return redirect()->route($this->create_route)->with('error', $this->error_message);
+        }
     }
 
     /**

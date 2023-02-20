@@ -46,9 +46,11 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 //------------- categories -------------
     Route::get('/categories/index', [CategoryController::class, 'index'])->name('dashboard.category.index');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('dashboard.category.create');
-    Route::get('/categories/edit', [CategoryController::class, 'edit'])->name('dashboard.category.edit');
     Route::post('/categories/create', [CategoryController::class, 'store'])->name('dashboard.category.store');
-    Route::put('/categories/update', [CategoryController::class, 'update'])->name('dashboard.category.update');
+    Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('dashboard.category.edit');
+    Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('dashboard.category.update');
+    Route::delete('/categories/destroy/{id}', [CategoryController::class, 'destroy'])->name('dashboard.category.destroy');
+
 //------------- End categories -------------
 
 //------------- Products -------------
