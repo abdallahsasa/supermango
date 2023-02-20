@@ -10,8 +10,8 @@
                 <a href="#." data-filter="*" class="sb-filter-link sb-active">All </a>
                 @if(isset($categories))
                     @foreach($categories as $category)
-                        <a href="#." id="scroll" data-filter=".{{str_replace(' ', '', $category->name)}}"
-                           class="sb-filter-link">{{$category->name}}</a>
+                        <a href="#."  data-filter=".{{str_replace(' ', '', $category->name)}}"
+                           class="sb-filter-link scroll" >{{$category->name}}</a>
                     @endforeach
                 @endif
             </div>
