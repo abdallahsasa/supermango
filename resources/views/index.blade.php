@@ -11,7 +11,7 @@
                     <!-- button -->
                     <a href="/menu" class="sb-btn sb-m-0">
                 <span class="sb-icon">
-                  <img src="img/ui/icons/arrow.svg" alt="icon">
+                  <img src="img/ui/icons/menu.svg" alt="icon">
                 </span>
                         <span>View Full Menu</span>
                     </a>
@@ -25,7 +25,7 @@
                             <a href="" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                                 <div class="sb-card-body">
                                     <div class="sb-category-icon">
-                                        <img src="{{asset('img/categories/3.png')}}" alt="icon">
+                                        <img src="{{$category->image_url}}" alt="icon">
                                     </div>
                                     <div class="sb-card-descr">
                                         <h3 class="sb-mb-10">{{$category->name}}</h3>
@@ -88,8 +88,6 @@
                                         </div>
                                     </div>
                                     <div class="sb-description">
-                                        <p class="sb-text sb-mb-15"> <span>{!! $product->description !!}</span></p>
-
                                     </div>
                                 </a>
                                 <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
