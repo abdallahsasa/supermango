@@ -54,18 +54,12 @@
                     scrollTop: $("#main").offset().top},
                 'slow');
         });
+
         @if(isset($categoryfilter))
-        $('.sb-filter .sb-active').removeClass('sb-active');
-        $('#{{$categoryfilter}}').addClass('sb-active');
-
-        $('.sb-masonry-grid .{{$categoryfilter}} ').show();
-        $('.sb-masonry-grid .sb-grid-item ').hide();
-        $('.sb-masonry-grid .{{$categoryfilter}} ').show();
-
-        console.log('{{$categoryfilter}}');
-        var categoryfilter = $(this).data('filter');
-        $('.sb-masonry-grid').isotope({
-            filter: categoryfilter
+        $(document).ready(function() {
+        const link = document.getElementById("{{$categoryfilter}}");
+        console.log(link);
+        link.click();
         });
         @endif
     </script>
