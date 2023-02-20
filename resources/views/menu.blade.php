@@ -15,13 +15,7 @@
                     @endforeach
                 @endif
             </div>
-            <script>
-                $("scroll").click(function() {
-                    $('html,body').animate({
-                            scrollTop: $("#main").offset().top},
-                        'slow');
-                });
-            </script>
+
             <!-- filter end -->
             <div class="sb-masonry-grid" id="main">
                 <div class="sb-grid-sizer"></div>
