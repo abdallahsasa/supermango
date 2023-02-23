@@ -10,10 +10,13 @@
                         <div class="sb-main-title">
                             <h1 class="sb-h2">More & More Juices</h1>
                             <ul class="sb-breadcrumbs">
-                                <li><a href="/">Home</a></li>
+                                <li><a class="text-uppercase" href="/">Home</a></li>
 
                                 <li>
-                                    <div>{{$product->name}}</div>
+                                    <div class="text-uppercase"> {{$product->category->name}} </div>
+                                </li>
+                                <li>
+                                    <div class="text-uppercase"> {{$product->name}} </div>
                                 </li>
                             </ul>
                         </div>
@@ -49,16 +52,18 @@
                             <div class="sb-price">
                                 @foreach($product->prices as $price)
                                     @if($price->size=='Regular')
-                                    {{$price->price}}
+                                        {{$price->price}}
                                         @break
                                     @else
                                         {{$price->price}}
-                                    @break
+                                        @break
                                     @endif
                                 @endforeach
-                                    <sub>{{$product->currency}}</sub>
+                                <sub>{{$product->currency}}</sub>
                             </div>
+
                         </div>
+                        <div class="sb-text sb-mb-30">{{$product->category->name}}</div>
                         <ul class="sb-stars sb-mb-25">
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
@@ -104,7 +109,7 @@
                                     <ul class="sb-list">
                                         @foreach($product->prices as $prod)
                                             <li>
-                                                <b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
+                                                <b class="text-capitalize">{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -150,8 +155,23 @@
                                     <h4 class="sb-card-title"><a href="{{route('home.product.show',$rproduct->id)}}">{{$rproduct->name}}</a>
                                     </h4>
                                     <div class="sb-price">
-                                        <sub>{{$rproduct->currency}}</sub> {{$rproduct->prices[0]['price']}}</div>
+                                        <sub>{{$rproduct->currency}}</sub>
+                                        @foreach($rproduct->prices as $rprice)
+                                            @if($rprice->size=='Regular')
+                                                {{$rprice->price}}
+                                                @break
+                                            @else
+                                                {{$rprice->price}}
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
+                                <a style="width: 100%;justify-content: center;" href="/product/{{$rproduct->id}}"
+                                   class="sb-btn sb-ppc">
+                      <span class="sb-icon">
+                        <img src="{{asset('img/ui/icons/search.svg')}}" alt="icon">
+                      </span><span>View sizes</span></a>
                             </div>
                         </div>
                     @endforeach
