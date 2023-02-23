@@ -24,7 +24,7 @@
     <!-- starbelly css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- page title -->
-    <title>More & More</title>
+    <title>juice world</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -69,10 +69,10 @@
                             <div class="sb-promo-content">
                                 <div class="sb-text-frame">
                                     <h3 class="sb-mb-10">Talabat</h3>
-                                    <h3 class="sb-mb-15">More And More Juices </h3>
+                                    <h3 class="sb-mb-15">juice world Juices </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">Delivers to You</p>
                                     <!-- button -->
-                                    <a href="https://www.talabat.com/kuwait/more-and-more-juices" class="sb-btn sb-ppc"
+                                    <a href="https://www.talabat.com/kuwait/juice-world" class="sb-btn sb-ppc"
                                        target="_blank">
                       <span class="sb-icon">
                         <img src="{{asset('img/ui/icons/delivery.svg')}}" alt="icon">
@@ -97,10 +97,10 @@
                             <div class="sb-promo-content">
                                 <div class="sb-text-frame">
                                     <h3 class="sb-mb-10">Deliveroo</h3>
-                                    <h3 class="sb-mb-15">More And More Juice </h3>
+                                    <h3 class="sb-mb-15">juice world Juices </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">Delivered to your door</p>
                                     <!-- button -->
-                                    <a href="https://deliveroo.com.kw/en/brands/more-and-more-juice" class="sb-btn sb-ppc"
+                                    <a href="https://deliveroo.com.kw/en/brands/juice-world" class="sb-btn sb-ppc"
                                        target="_blank">
                       <span class="sb-icon">
                         <img src="{{asset('img/ui/icons/delivery.svg')}}" alt="icon">
