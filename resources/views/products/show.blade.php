@@ -8,9 +8,9 @@
                     <!-- main title -->
                     <div class="sb-main-title-frame">
                         <div class="sb-main-title">
-                            <h1 class="sb-h2">More & More Juices</h1>
+                            <h1 class="sb-h2">{{ __('product.banner-title') }}</h1>
                             <ul class="sb-breadcrumbs">
-                                <li><a class="text-uppercase" href="/">Home</a></li>
+                                <li><a class="text-uppercase" href="/">{{ __('menu.home') }}</a></li>
 
                                 <li>
                                     <div class="text-uppercase"> {{$product->category->name}} </div>
@@ -52,14 +52,14 @@
                             <div class="sb-price">
                                 @foreach($product->prices as $price)
                                     @if($price->size=='Regular')
-                                        {{$price->price}}
+                                        {{number_format($price->price,3)}}
                                         @break
                                     @else
-                                        {{$price->price}}
+                                        {{number_format($price->price,3)}}
                                         @break
                                     @endif
                                 @endforeach
-                                <sub>{{$product->currency}}</sub>
+                                    <sub>{{$product->currency}}</sub>
                             </div>
 
                         </div>
@@ -109,7 +109,7 @@
                                     <ul class="sb-list">
                                         @foreach($product->prices as $prod)
                                             <li>
-                                                <b class="text-capitalize">{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
+                                                <b class="text-capitalize"><i class="fa-solid fa-cup-togo"></i>{{ __('product.'.str_replace(' ', '', $prod->size)) }}</b><span>{{number_format($prod->price,3)}}   {{$product->currency}}</span>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -126,7 +126,7 @@
         <div class="container">
             <div class="sb-group-title sb-mb-30">
                 <div class="sb-left sb-mb-30">
-                    <h2 class="sb-cate-title sb-mb-30">Need a new flavor adventure? Try these!</h2>
+                    <h2 class="sb-cate-title sb-mb-30">{{ __('product.related-products') }}</h2>
                 </div>
                 @if(count($relatedProducts)>4)
                     <div class="sb-right sb-mb-30">
@@ -158,20 +158,16 @@
                                         <sub>{{$rproduct->currency}}</sub>
                                         @foreach($rproduct->prices as $rprice)
                                             @if($rprice->size=='Regular')
-                                                {{$rprice->price}}
+                                                {{number_format($price->price,3)}}
                                                 @break
                                             @else
-                                                {{$rprice->price}}
+                                                {{number_format($price->price,3)}}
                                                 @break
                                             @endif
                                         @endforeach
                                     </div>
                                 </div>
-                                <a style="width: 100%;justify-content: center;" href="/product/{{$rproduct->id}}"
-                                   class="sb-btn sb-ppc">
-                      <span class="sb-icon">
-                        <img src="{{asset('img/ui/icons/search.svg')}}" alt="icon">
-                      </span><span>View sizes</span></a>
+
                             </div>
                         </div>
                     @endforeach

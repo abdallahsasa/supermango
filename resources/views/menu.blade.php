@@ -22,7 +22,7 @@
                 @if(isset($products))
                     @foreach($products as $product)
                         <div class="sb-grid-item sb-item-25 {{str_replace(' ', '', $product->category->name)}}">
-                            <a data-fancybox="menu" data-no-swup href="{{$product->image_url}}"
+                            <a  href="/product/{{$product->id}}"
                                class="sb-menu-item sb-mb-2">
                                 <div class="sb-cover-frame">
                                     <img src="{{$product->image_url}}" alt="{{$product->image_name}}">
@@ -32,20 +32,15 @@
                                     <div class="sb-price">
                                         @foreach($product->prices as $price)
                                             @if($price->size=='Regular')
-                                                {{$price->price}}
+                                                {{number_format($price->price,3)}}
                                                 @break
                                             @else
-                                                {{$price->price}}
+                                                {{number_format($price->price,3)}}
                                                 @break
                                             @endif
                                         @endforeach
                                         <sub>{{$product->currency}}</sub></div>
                                 </div>
-                                <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
-                                   class="sb-btn sb-ppc">
-                      <span class="sb-icon">
-                        <img src="{{asset('img/ui/icons/search.svg')}}" alt="icon">
-                      </span><span>View sizes</span></a>
                             </a>
                         </div>
                     @endforeach

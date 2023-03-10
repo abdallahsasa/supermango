@@ -1,10 +1,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="Juice World Dashboard" />
-    <meta name="description" content="Juice World Dashboard" />
+    <meta name="keywords" content="More & More Dashboard" />
+    <meta name="description" content="More & More Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Juice World Dashboard</title>
+    <title>More & More Dashboard</title>
 
     <!-- Favicon -->
 {{--    <link rel="shortcut icon" href="{{asset('img/ui/logo.png')}}" />--}}
