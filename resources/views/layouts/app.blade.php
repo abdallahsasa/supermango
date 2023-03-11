@@ -69,7 +69,7 @@
                             <div class="sb-promo-content">
                                 <div class="sb-text-frame">
                                     <h3 class="sb-mb-10">{{ __('menu.talabat') }}</h3>
-                                    <h3 class="sb-mb-15">{{ __('menu.more-and-more') }} </h3>
+                                    <h3 class="sb-mb-15">{{ __('menu.juice-world') }} </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">{{ __('menu.delivers-to-you') }}</p>
                                     <!-- button -->
                                     <a href="https://www.talabat.com/kuwait/juice-world" class="sb-btn sb-ppc"
@@ -97,7 +97,7 @@
                             <div class="sb-promo-content">
                                 <div class="sb-text-frame">
                                     <h3 class="sb-mb-10">{{ __('menu.deliveroo') }}</h3>
-                                    <h3 class="sb-mb-15">{{ __('menu.more-and-more') }} </h3>
+                                    <h3 class="sb-mb-15">{{ __('menu.juice-world') }} </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">{{ __('menu.delivered-to-your-door') }}</p>
                                     <!-- button -->
                                     <a href="https://deliveroo.com.kw/en/brands/juice-world" class="sb-btn sb-ppc"
