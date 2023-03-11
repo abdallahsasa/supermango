@@ -8,7 +8,7 @@
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#F5C332">
     <!-- favicon  -->
-    <link rel="shortcut icon" href="{{asset('img/ui/white-logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('img/ui/logo.png')}}" type="image/x-icon">
     <!-- font awesome css -->
     <link rel="stylesheet" href="{{asset('css/plugins/font-awesome.min.css')}}">
     <!-- bootstrap css -->
@@ -72,7 +72,7 @@
                                     <h3 class="sb-mb-15">{{ __('menu.more-and-more') }} </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">{{ __('menu.delivers-to-you') }}</p>
                                     <!-- button -->
-                                    <a href="https://www.talabat.com/kuwait/more-and-more-juices" class="sb-btn sb-ppc"
+                                    <a href="https://www.talabat.com/kuwait/juice-world" class="sb-btn sb-ppc"
                                        target="_blank">
                       <span class="sb-icon">
                         <img src="{{asset('img/ui/icons/delivery.svg')}}" alt="icon">
@@ -100,7 +100,7 @@
                                     <h3 class="sb-mb-15">{{ __('menu.more-and-more') }} </h3>
                                     <p class="sb-text sb-text-sm sb-mb-15">{{ __('menu.delivered-to-your-door') }}</p>
                                     <!-- button -->
-                                    <a href="https://deliveroo.com.kw/en/brands/more-and-more-juice" class="sb-btn sb-ppc"
+                                    <a href="https://deliveroo.com.kw/en/brands/juice-world" class="sb-btn sb-ppc"
                                        target="_blank">
                       <span class="sb-icon">
                         <img src="{{asset('img/ui/icons/delivery.svg')}}" alt="icon">

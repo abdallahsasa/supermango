@@ -5,7 +5,7 @@
         <div class="sb-top-bar">
             <a href="{{url('/')}}" class="sb-logo-frame">
                 <!-- logo img -->
-                <img src="{{asset('img/ui/logo.png')}}" alt="More & More">
+                <img src="{{asset('img/ui/logo.png')}}" alt="Juice World">
             </a>
             <!-- menu -->
             <div class="sb-right-side">
