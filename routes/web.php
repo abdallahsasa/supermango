@@ -64,7 +64,7 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 
 //------------- End Products -------------
 
-
+/*
 //------------- ContactUs -------------
     Route::get('/contact/index', [ContactUsController::class, 'index'])->name('contact.index');
 //------------- End ContactUs -------------
@@ -72,18 +72,18 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 //------------- Website Profile -------------
     Route::get('/website-profile/index', [WebsiteProfileController::class, 'create'])->name('website_profile.create');
     Route::put('/website-profile/index', [WebsiteProfileController::class, 'update'])->name('website_profile.update');
-//------------- End ContactUs -------------
+//------------- End ContactUs -------------*/
 
 });
 //FrontEnd Routes
-Route::get('/', [FrontendController::class, 'index'])->name('home.product.index');
-Route::get('/menu', [FrontendController::class, 'menu'])->name('home.product.menu');
-Route::get('/menu/{categoryfilter}', [FrontendController::class, 'filtermenu'])->name('home.product.filtermenu');
+Route::get('/', [FrontendController::class, 'index'])->name('website.home');
+Route::get('/menu', [FrontendController::class, 'menu'])->name('website.products.index');
+Route::get('/menu/{categoryfilter}', [FrontendController::class, 'filtermenu'])->name('website.products.filtermenu');
 
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('website.products.details');
 
 //------------- ContactUs -------------
-Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
+Route::get('/contact', [ContactUsController::class, 'create'])->name('website.contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 //------------- End ContactUs -------------
 

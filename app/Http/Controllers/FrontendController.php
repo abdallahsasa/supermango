@@ -15,9 +15,9 @@ class FrontendController extends Controller
 
     public function __construct()
     {
-        $this->index_view = 'index';
-        $this->menu_view = 'menu';
-        $this->show_view = 'show';
+        $this->index_view = 'website.home';
+        $this->menu_view = 'website.products.index';
+        $this->show_view = 'website.products.details';
         $this->soon_view = 'coming_soon';
     }
 
