@@ -15,11 +15,11 @@
                                 <li><a class="nav-link" href="{{route('website.home')}}">Home</a> </li>
                                 <li><a class="nav-link" href="{{route('website.products.index')}}">Menu</a> </li>
 
-                                <li>
+                                <li style="display:none;">
                                     <a class="nav-link" href="{{route("website.contact")}}">Contact</a>
                                 </li>
 
-                                <li class="dropdown">
+                                <li class="dropdown" style="display:none;">
                                     <a class="nav-link">Languages</a>
                                     <ul class="sub-menu">
                                         <li><a href="#">English</a></li>
