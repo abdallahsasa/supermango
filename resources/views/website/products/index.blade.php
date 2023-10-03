@@ -49,14 +49,14 @@
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fal fa-star"></i></li>
-                                        <li><i class="fal fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
                                     </ul>
                                 </div>
                                 <h3 class="title"><a href="{{route('website.products.details',$product->id)}}">{{$product->name}}</a></h3>
                                 <div class="s_bottom ul_li">
                                     <span class="price">Price</span>
-                                    <span>{{$product->regularprice()}}</span>
+                                    <span>{{$product->regularprice()}} AED</span>
 
                                 </div>
                             </div>
