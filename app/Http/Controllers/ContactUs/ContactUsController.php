@@ -46,7 +46,7 @@ class ContactUsController extends Controller
     function create()
     {
         $websiteContactData=WebsiteProfile::all()->first();
-        return view('/contact',compact('websiteContactData'));
+        return view('website.contact',compact('websiteContactData'));
     }
 
     /**

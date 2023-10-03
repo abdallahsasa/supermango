@@ -26,7 +26,7 @@
         <div class="breadcrumb_icon_wrap">
             <div class="container">
                 <div class="breadcrumb_icon">
-                    <img src="{{asset('website/img/icon/bc_icon.png')}}" alt="">
+                    <img src="{{asset('website/img/icon/m_icon_01.png')}}" alt="">
                 </div>
             </div>
         </div>

@@ -145,30 +145,27 @@
                             <h2>Feeling thirsty?</h2>
                             <p>Quench your thirst with a glass of our fresh-pressed juice.</p>
                             <div class="hero_btn ul_li">
-                                <a class="thm_btn" href="about.html">Learn More</a>
+                                <a class="thm_btn" >Contact Us</a>
                                 <a class="thm_btn thm_btn-2" href="{{route('website.products.index')}}">See our menu</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6" style="visibility: hidden;">
+                    <div class="col-lg-3 col-md-6" >
                         <ul class="info_list ul_li_block">
                             <li>
-                                <h4>Great Location</h4>
-                                <p>Rorem ipsum dolor sit amet, etur advoluptatem  voluptatem</p>
+                                <h4>Fresh</h4>
                                 <div class="count">
                                     <span>01</span>
                                 </div>
                             </li>
                             <li>
                                 <h4>Nature first</h4>
-                                <p>Rorem ipsum dolor sit amet, etur advoluptatem  voluptatem</p>
                                 <div class="count">
                                     <span>02</span>
                                 </div>
                             </li>
                             <li>
                                 <h4>Healthy Juice</h4>
-                                <p>Rorem ipsum dolor sit amet, etur advoluptatem  voluptatem</p>
                                 <div class="count">
                                     <span>03</span>
                                 </div>
@@ -191,86 +188,22 @@
             <div class="row">
                 <div class="col-12">
                     <div class="category_active owl-carousel">
+                        @foreach($categories as $category)
                         <div class="cat_single">
                             <div class="cat_icon">
-                                <img src="{{asset('website/img/icon/ci_01.png')}}" alt="">
+                                <img src="{{asset($category->image_url)}}" alt="">
                             </div>
-                            <h3><a href="menu.html">combo Pack</a></h3>
-                            <p>Rorem ipsum advolu ptateme  volupta tem Rorem ipsuey</p>
-                            <div class="cat_img">
-                                <img src="{{asset('website/img/category/cat_01.png')}}" alt="">
-                            </div>
+                            <h3><a href="menu.html">{{$category->name}}</a></h3>
+                            <p>{{$category->description}}</p>
+
                             <div class="cat_shape">
                                 <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
                             </div>
                             <div class="cat_number">
-                                <span>01</span>
+                                <span>{{$category->id}}</span>
                             </div>
                         </div>
-                        <div class="cat_single">
-                            <div class="cat_icon">
-                                <img src="{{asset('website/img/icon/ci_02.png')}}" alt="">
-                            </div>
-                            <h3><a href="menu.html">Chicken</a></h3>
-                            <p>Rorem ipsum advolu ptateme  volupta tem Rorem ipsuey</p>
-                            <div class="cat_img">
-                                <img src="{{asset('website/img/category/cat_02.png')}}" alt="">
-                            </div>
-                            <div class="cat_shape">
-                                <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
-                            </div>
-                            <div class="cat_number">
-                                <span>02</span>
-                            </div>
-                        </div>
-                        <div class="cat_single">
-                            <div class="cat_icon">
-                                <img src="{{asset('website/img/icon/ci_03.png')}}" alt="">
-                            </div>
-                            <h3><a href="menu.html">Pizza & Drink</a></h3>
-                            <p>Rorem ipsum advolu ptateme  volupta tem Rorem ipsuey</p>
-                            <div class="cat_img">
-                                <img src="{{asset('website/img/category/cat_03.png')}}" alt="">
-                            </div>
-                            <div class="cat_shape">
-                                <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
-                            </div>
-                            <div class="cat_number">
-                                <span>03</span>
-                            </div>
-                        </div>
-                        <div class="cat_single">
-                            <div class="cat_icon">
-                                <img src="{{asset('website/img/icon/ci_04.png')}}" alt="">
-                            </div>
-                            <h3><a href="menu.html">Box Meals</a></h3>
-                            <p>Rorem ipsum advolu ptateme  volupta tem Rorem ipsuey</p>
-                            <div class="cat_img">
-                                <img src="{{asset('website/img/category/cat_04.png')}}" alt="">
-                            </div>
-                            <div class="cat_shape">
-                                <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
-                            </div>
-                            <div class="cat_number">
-                                <span>04</span>
-                            </div>
-                        </div>
-                        <div class="cat_single">
-                            <div class="cat_icon">
-                                <img src="{{asset('website/img/icon/ci_01.png')}}" alt="">
-                            </div>
-                            <h3><a href="menu.html">combo Pack</a></h3>
-                            <p>Rorem ipsum advolu ptateme  volupta tem Rorem ipsuey</p>
-                            <div class="cat_img">
-                                <img src="{{asset('website/img/category/cat_01.png')}}" alt="">
-                            </div>
-                            <div class="cat_shape">
-                                <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
-                            </div>
-                            <div class="cat_number">
-                                <span>01</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
