@@ -39,7 +39,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 grid-item mb-30 {{$product->category->id}}">
                     <div class="shop_single white_bg">
                         <div class="thumb text-center">
-                            <a class="image" href=""><img src="{{asset($product->image_url)}}" alt=""></a>
+                            <a class="image" href=""><img src="{{$product->image_url}}" alt=""></a>
                         </div>
                         <div class="content">
                             <div class="s_top ul_li">
