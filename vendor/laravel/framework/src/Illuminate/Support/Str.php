@@ -735,9 +735,7 @@ class Str
             while (($len = strlen($string)) < $length) {
                 $size = $length - $len;
 
-                $bytesSize = (int) ceil(($size) / 3) * 3;
-
-                $bytes = random_bytes($bytesSize);
+                $bytes = random_bytes($size);
 
                 $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
             }
