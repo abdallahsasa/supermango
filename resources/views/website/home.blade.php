@@ -194,7 +194,7 @@
                                 <img src="{{asset($category->image_url)}}" alt="">
                             </div>
                             <h3><a href="menu.html">{{$category->name}}</a></h3>
-                            <p>{{$category->description}}</p>
+                            <p>{!!$category->description!!}</p>
 
                             <div class="cat_shape">
                                 <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
