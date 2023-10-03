@@ -146,11 +146,11 @@
                             <p>Quench your thirst with a glass of our fresh-pressed juice.</p>
                             <div class="hero_btn ul_li">
                                 <a class="thm_btn" href="about.html">Learn More</a>
-                                <a class="thm_btn thm_btn-2" href="menu.html">See our menu</a>
+                                <a class="thm_btn thm_btn-2" href="{{route('website.products.index')}}">See our menu</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6" style="visibility: hidden;">
                         <ul class="info_list ul_li_block">
                             <li>
                                 <h4>Great Location</h4>

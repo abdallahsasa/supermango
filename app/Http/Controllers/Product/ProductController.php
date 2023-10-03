@@ -130,7 +130,6 @@ class ProductController extends Controller
         // has_access('product_create');
         $validated_data = $request->validate($this->StoreValidationRules());
 
-        try {
             $object = $this->model_instance::create(Arr::except($validated_data, ['image']));
             if ($request->has('image')) {
                 $image = $validated_data["image"];
@@ -168,11 +167,6 @@ class ProductController extends Controller
             UserActivity::logActivity($log_message);
 
             return redirect()->route($this->create_route, $object->id)->with('success', $this->success_message);
-        } catch (\Exception $ex) {
-
-            Log::error($ex->getMessage());
-            return redirect()->route($this->create_route)->with('error', $this->error_message);
-        }
 
     }
 

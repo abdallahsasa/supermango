@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-6">
                     <div class="logo">
-                        <a href="index.html"><img src="{{asset('website/img/logo/logo.png')}}" alt="logo"></a>
+                        <a href="index.html"><img width="45%" src="{{asset('website/img/Logo.png')}}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-6">
@@ -28,30 +28,6 @@
                                 </li>
                             </ul>
                         </nav>
-                        <div class="header_right ul_li_right">
-                            <div class="search_box">
-                                <form action="javascript:void(0);">
-                                    <input type="text" placeholder="Enter your search">
-                                    <button type="submit"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                            <div class="header_carts ul_li">
-                                <div class="hamburger_menu">
-                                    <a href="javascript:void(0);">
-                                        <div class="icon cart_btn d-none d-lg-block">
-                                            <i class="fal fa-shopping-basket"></i>
-                                            <small class="cart_counter">04</small>
-                                        </div>
-                                        <div class="icon bar d-lg-none">
-                                            <span><i class="fal fa-bars"></i></span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a class="icon cart_wishlist" href="javascript:void(0);">
-                                    <i class="fal fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

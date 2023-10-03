@@ -64,7 +64,7 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 
 //------------- End Products -------------
 
-/*
+
 //------------- ContactUs -------------
     Route::get('/contact/index', [ContactUsController::class, 'index'])->name('contact.index');
 //------------- End ContactUs -------------
@@ -72,7 +72,7 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 //------------- Website Profile -------------
     Route::get('/website-profile/index', [WebsiteProfileController::class, 'create'])->name('website_profile.create');
     Route::put('/website-profile/index', [WebsiteProfileController::class, 'update'])->name('website_profile.update');
-//------------- End ContactUs -------------*/
+//------------- End ContactUs -------------
 
 });
 //FrontEnd Routes

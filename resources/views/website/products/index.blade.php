@@ -21,13 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="breadcrumb_icon_wrap">
-            <div class="container">
-                <div class="breadcrumb_icon">
-                    <img src="{{asset('website/img/icon/bc_icon.png')}}" alt="">
-                </div>
-            </div>
-        </div>
+
     </section>
     <!-- page title end -->
 
@@ -44,36 +38,6 @@
                         <button data-filter=".cat4">Chicken Chup</button>
                         <button data-filter=".cat5">Ice Cream</button>
                         <button data-filter=".cat6">Drink</button>
-                    </div>
-                </div>
-            </div>
-            <div class="shop_filter_bar">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <form action="#">
-                            <div class="pricing_range">
-                                <h4 class="item_title text-uppercase">Price range</h4>
-                                <div class="price-range-area">
-                                    <div id="slider-range" class="slider-range"></div>
-                                    <div class="price-text d-flex align-items-center">
-                                        <span>Price:</span>
-                                        <input type="text" id="amount" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="shop_filter_tags">
-                            <h4 class="item_title text-uppercase">Popular tag</h4>
-                            <ul class="ul_li">
-                                <li><a href="#!">New</a></li>
-                                <li><a href="#!">Top</a></li>
-                                <li><a href="#!">Sale</a></li>
-                                <li><a href="#!">Business</a></li>
-                                <li><a href="#!">Books</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
