@@ -8,45 +8,50 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
     protected $table = 'products';
-    protected $fillable = array('name','description','price','active','image','category_id','sku');
+    protected $fillable = array('name', 'description', 'price', 'active', 'image', 'category_id', 'sku');
 
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
+
     public function translations()
     {
         return $this->hasMany('App\Models\ProductTranslation');
     }
+
     public function getNameAttribute($attribute)
     {
-        if(session()->has('locale') && session('locale') != "en")
-        {
+        if (session()->has('locale') && session('locale') != "en") {
             return $this->get_name_trans(session('locale'))->name ?? $attribute;
         }
         return $attribute;
     }
+
     public function get_name_trans($lang)
     {
         return $this->translations()
-            ->where('lang','=',$lang)
+            ->where('lang', '=', $lang)
             ->first();
     }
+
     public function getDescriptionAttribute($attribute)
     {
-        if(session()->has('locale') && session('locale') != "en")
-        {
+        if (session()->has('locale') && session('locale') != "en") {
             return $this->get_description_trans(session('locale'))->description ?? $attribute;
         }
         return $attribute;
     }
+
     public function get_description_trans($lang)
     {
-        return  $this->translations()
-            ->where('lang','=',$lang)
+        return $this->translations()
+            ->where('lang', '=', $lang)
             ->first('description');
     }
+
     public function media()
     {
         return $this->hasMany('App\Models\ProductMedia');
@@ -56,15 +61,18 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductTag');
     }
+
     public function prices()
     {
         return $this->hasMany('App\Models\ProductPrices');
     }
+
     public function regularprice()
     {
-        $regularprice  = ProductPrices::where(['product_id ' => $this->getKey(),'size'=> 'Regular']);
+        $regularprice = ProductPrices::where(['product_id' => $this->getKey(), 'size' => 'Regular'])->pluck('price')->first();
         return $regularprice;
     }
+
     public function attributes()
     {
         return $this->belongsToMany('App\Models\Attribute')->withPivot('values');
@@ -82,7 +90,7 @@ class Product extends Model
 
     public static function getActiveProducts()
     {
-        return self::where(['status' => 'active','stock_status' => 'in'])->where('stock_quantity','>',0);
+        return self::where(['status' => 'active', 'stock_status' => 'in'])->where('stock_quantity', '>', 0);
     }
 
     public function in_stock()
