@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $this->index_view = 'dashboard.products.index';
         $this->create_view = 'dashboard.products.create';
-        $this->show_view = 'products.show';
+        $this->show_view = 'website.products.details';
         $this->edit_view = 'dashboard.products.edit';
         $this->edit_variation_view = 'dashboard.products.edit_variation';
         $this->index_route = 'dashboard.product.index';
