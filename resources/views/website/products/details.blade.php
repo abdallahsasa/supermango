@@ -27,7 +27,7 @@
     <!-- page title end -->
 
     <!-- shop details start -->
-    <section class="shop_details pt-120 pb-90">
+    <section class="shop_details pt-40 pb-40">
         <div class="container">
             <div class="product_top_wrap mb-60">
                 <div class="row">
