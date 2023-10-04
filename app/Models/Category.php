@@ -14,6 +14,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\CategoryTranslation');
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     public function getNameAttribute($attribute)
     {
         if(session()->has('locale') && session('locale') != "en")

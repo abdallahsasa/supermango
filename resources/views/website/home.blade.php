@@ -193,14 +193,20 @@
                             <div class="cat_icon">
                                 <img src="{{asset($category->image_url)}}" alt="">
                             </div>
-                            <h3><a href="menu.html">{{$category->name}}</a></h3>
+                            <h3><a href="{{route('website.products.filtermenu',$category->id)}}">{{$category->name}}</a></h3>
 
                             <div class="cat_shape">
                                 <img src="{{asset('website/img/icon/cat_shape.png')}}" alt="">
                             </div>
-                            <div class="cat_number">
-                                <span>{{$category->id}}</span>
-                            </div>
+                            @if($category->products->count() > 0)
+                                    <?php $randomIndex = rand(0, $category->products->count() - 1); ?>
+                                {{ $category->products[$randomIndex]->name }}
+                                <h4><a href="{{route('website.products.details',$category->products[$randomIndex]->id)}}">{{$category->name}}</a></h4>
+                                <div class="cat_img">
+                                    <img src="{{$category->products[$randomIndex]->image_url}}" alt="">
+                                </div>
+                            @endif
+
                         </div>
                         @endforeach
                     </div>
