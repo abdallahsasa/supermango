@@ -15,7 +15,7 @@
                                 <li><a class="nav-link" href="{{route('website.home')}}">Home</a> </li>
                                 <li><a class="nav-link" href="{{route('website.products.index')}}">Menu</a> </li>
 
-                                <li style="display:none;">
+                                <li>
                                     <a class="nav-link" href="{{route("website.contact")}}">Contact</a>
                                 </li>
 
@@ -28,6 +28,24 @@
                                 </li>
                             </ul>
                         </nav>
+
+                        <div class="header_right ul_li_right">
+                            <div class="search_box">
+                                <form action="javascript:void(0);">
+                                    <input type="text" placeholder="Enter your search">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="header_carts ul_li">
+                                <a class="icon cart_wishlist" href="#">
+                                    <i class="fal fa-heart"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>

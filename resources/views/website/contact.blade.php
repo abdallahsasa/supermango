@@ -4,32 +4,23 @@
 
 
     <!-- page title start -->
-    <section class="page_title_area" data-background="{{asset('website/img/bg/page_title.jpg')}}">
+    <section class="page_title_area" data-background="{{asset('website/img/bg/page_title3.png')}}"
+             style="background-repeat: no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="page_title">
-                        <h1>Contact us</h1>
+                        <h1 style="color: #ff8e28;">Romana Juices</h1>
                         <ul class="breadcrumb_nav ul_li">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Contact us</li>
+                            <li  ><a style="color: #ff8e28;" href="/">Home</a></li>
+                            <li>Contact Us</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="page_title_img">
-                        <img src="{{asset('website/img/bg/page_title_img.png')}}" alt="">
-                    </div>
-                </div>
+
             </div>
         </div>
-        <div class="breadcrumb_icon_wrap">
-            <div class="container">
-                <div class="breadcrumb_icon">
-                    <img src="{{asset('website/img/icon/m_icon_01.png')}}" alt="">
-                </div>
-            </div>
-        </div>
+
     </section>
     <!-- page title end -->
     <!-- contact start -->
@@ -44,8 +35,7 @@
                             </div>
                             <div class="contact_text">
                                 <h4>Email Address</h4>
-                                <p>Frudbaz@gmail.com</p>
-                                <p>Info@webmail.com</p>
+                                <a href="mailto:info@romana-kw.com"> <p> info@romana-kw.com</p></a>
                             </div>
                         </div>
                     </div>
@@ -56,8 +46,9 @@
                             </div>
                             <div class="contact_text">
                                 <h4>Phone Number</h4>
-                                <p>+1255 - 568 - 6523</p>
-                                <p>+1255 - 568 - 6523</p>
+                                <a href="tel:+965 9090 1558"> <p> +965 9090 1558</p></a>
+
+
                             </div>
                         </div>
                     </div>
@@ -68,25 +59,46 @@
                             </div>
                             <div class="contact_text">
                                 <h4>Our Location</h4>
-                                <p>Bowery St, New York, NY 10013,USA</p>
+                                <p>Kwait - Jaber Al-Ahmed Co-op Society Block 6</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <form class="contact_form" action="#">
+                    <form class="contact_form" method="POST" action="{{route('contact.store')}}">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" name="fname" placeholder="Your Name">
+                                <input type="text" name="name" placeholder="Your Name" value="{{old('name')}}">
+                                @if($errors->has('name'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $errors->first('name') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-lg-6">
-                                <input type="email" name="email" placeholder="Mail Address">
+                                <input type="email" name="email" placeholder="Mail Address" value="{{old('email')}}">
+                                @if($errors->has('email'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-12">
-                                <input type="text" name="subject" placeholder="Enter Your Subject :">
+                                <input type="text" name="number" placeholder="Enter Your Phone">
+                                @if($errors->has('number'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $errors->first('number') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-12">
-                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Massage :"></textarea>
+                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Massage :"> {{ old('message') }}</textarea>
+                                @if($errors->has('message'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $errors->first('message') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-12">
                                 <div class="contact_btn text-center">
