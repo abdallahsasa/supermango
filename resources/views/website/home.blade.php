@@ -201,8 +201,7 @@
                             </div>
                             @if($category->products->count() > 0)
                                     <?php $randomIndex = rand(0, $category->products->count() - 1); ?>
-                                {{ $category->products[$randomIndex]->name }}
-                                <h4><a href="{{route('website.products.details',$category->products[$randomIndex]->id)}}">{{$category->name}}</a></h4>
+                              <h4>  {{ $category->products[$randomIndex]->name }}</h4>
                                 <div class="cat_img">
                                     <img src="{{$category->products[$randomIndex]->image_url}}" alt="">
                                 </div>

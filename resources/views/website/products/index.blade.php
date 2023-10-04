@@ -10,7 +10,7 @@
                     <div class="page_title">
                         <h1 style="color: #ff8e28;">Romana Juices</h1>
                         <ul class="breadcrumb_nav ul_li">
-                            <li><a href="/">Home</a></li>
+                            <li  ><a style="color: #ff8e28;" href="/">Home</a></li>
                             <li>Online Menu</li>
                         </ul>
                     </div>
