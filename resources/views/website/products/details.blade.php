@@ -88,8 +88,8 @@
                     <h2>Pair your favorite drink with the perfect accompaniments.</h2>
                 </div>
                 <div class="row justify-content-center">
+                    @foreach($relatedProducts as $relatedProduct)
                     <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-                        @foreach($relatedProducts as $relatedProduct)
                         <div class="shop_single white_bg">
                             <div class="thumb text-center">
                                 <a class="image" href="{{route('website.products.details',$relatedProduct->id)}}"><img src="{{$relatedProduct->image_url}}" alt=""></a>
@@ -113,8 +113,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
