@@ -189,6 +189,7 @@
                 <div class="col-12">
                     <div class="category_active owl-carousel">
                         @foreach($categories as $category)
+                            @if($category->products->count() > 0)
                         <div class="cat_single">
                             <div class="cat_icon">
                                 <img src="{{asset($category->image_url)}}" alt="">
@@ -208,6 +209,7 @@
                             @endif
 
                         </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
