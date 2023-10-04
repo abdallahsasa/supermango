@@ -181,7 +181,7 @@ class ProductController extends Controller
         $product = $this->model_instance::findOrFail($id);
         $relatedProducts = Product::whereNotIn('id', [$product->id])
             ->inRandomOrder()
-            ->limit(10)
+            ->limit(3)
             ->get();
         return view($this->show_view, compact('product', 'relatedProducts'));
     }
