@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- page title start -->
-    <section class="page_title_area" data-background="{{asset('website/img/bg/page_title3.png')}}">
+    <section class="page_title_area" data-background="{{asset('website/img/bg/page_title3.png')}} " style="background-repeat: no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
