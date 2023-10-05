@@ -125,10 +125,10 @@
 
 
     <!-- hero start -->
-    <section class="hero_area hero_1">
+    <section class="hero_area hero_1 rtl">
         <div class="hero_wrap hero_height hero_bg">
             <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
+                <div class="row align-items-center justify-content-lg-between" @if(app()->getLocale() === 'ar') style="flex-direction: row-reverse;@endif">
                     <div class="col-lg-5">
                         <div class="hero_img">
 {{--                            <img src="{{asset('website/img/hero/img_01.png')}}" alt="">--}}
@@ -141,31 +141,31 @@
 
                     <div class="col-lg-4 col-md-6 order-first">
                         <div class="hero_text">
-                            <h5>Romana's Refreshing Juice Combo</h5>
-                            <h2>Feeling thirsty?</h2>
-                            <p>Quench your thirst with a glass of our fresh-pressed juice.</p>
+                            <h5>{{__('home.heading1')}}</h5>
+                            <h2>{{__('home.heading2')}}</h2>
+                            <p>{{__('home.subhead')}}</p>
                             <div class="hero_btn ul_li">
-                                <a class="thm_btn" >Contact Us</a>
-                                <a class="thm_btn thm_btn-2" href="{{route('website.products.index')}}">See our menu</a>
+                                <a class="thm_btn" >{{__('home.contact')}}</a>
+                                <a class="thm_btn thm_btn-2" href="{{route('website.products.index')}}">{{__('home.cta')}}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6" >
                         <ul class="info_list ul_li_block">
                             <li>
-                                <h4>Fresh</h4>
+                                <h4>{{__('home.left1')}}</h4>
                                 <div class="count">
                                     <span>01</span>
                                 </div>
                             </li>
                             <li>
-                                <h4>Nature first</h4>
+                                <h4>{{__('home.left2')}}</h4>
                                 <div class="count">
                                     <span>02</span>
                                 </div>
                             </li>
                             <li>
-                                <h4>Healthy Juice</h4>
+                                <h4>{{__('home.left3')}}</h4>
                                 <div class="count">
                                     <span>03</span>
                                 </div>
@@ -182,8 +182,8 @@
     <section class="category_area pt-120 pb-120">
         <div class="container">
             <div class="sec_title sec_title-2">
-                <span>Our Popular Menu</span>
-                <h2>Went To Try?</h2>
+                <span>{{__('home.menu-headline')}}</span>
+                <h2>{{__('home.menu-subhead')}}</h2>
             </div>
             <div class="row">
                 <div class="col-12">

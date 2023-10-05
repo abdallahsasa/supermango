@@ -14,5 +14,6 @@ return [
     'delivered-to-your-door' => 'Delivered to your door',
     'delivers-to-you' => 'Delivers to You',
     'order-now' => 'Order Now',
+    'shop_title' => 'ROMANA JUICES',
 
 ];

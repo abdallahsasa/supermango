@@ -1,11 +1,14 @@
 <?php
 
 return [
-    'category-headingp1' => 'What do you',
-    'category-headingp2' => 'like today?',
-    'category-subheading' => 'Discover Our Categories',
-    'most' => 'Most',
-    'popular' => 'Popular',
-    'view-full-menu' => 'View Full Menu',
-    'full-menu' => 'Full Menu',
+    'heading1' => 'Romana\'s Refreshing Juice Combo',
+    'heading2' => 'FEELING THIRSTY?',
+    'subhead' => 'Quench your thirst with a glass of our fresh-pressed juice.',
+    'cta' => 'SEE OUR MENU',
+    'contact' => 'CONTACT US',
+    'left1' => 'Fresh',
+    'left2' => 'NATURE FIRST',
+    'left3' => 'HEALTHY JUICE',
+    'menu-headline' => 'Our Popular Menu',
+    'menu-subhead' => 'WANT TO TRY?',
 ];

@@ -14,4 +14,5 @@ return [
     'delivered-to-your-door' => 'بتوصل إلى باب منزلك',
     'delivers-to-you' => 'بتوصل لك',
     'order-now' => 'اطلب الان',
+    'shop-title' => 'عصائر رمانة',
 ];

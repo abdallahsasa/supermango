@@ -12,18 +12,18 @@
                         <nav class="main_menu collapse navbar-collapse">
                             <ul class="main_menu_list ul_li">
 
-                                <li><a class="nav-link" href="{{route('website.home')}}">Home</a> </li>
-                                <li><a class="nav-link" href="{{route('website.products.index')}}">Menu</a> </li>
+                                <li><a class="nav-link" href="{{route('website.home')}}">{{__('menu.home')}}</a> </li>
+                                <li><a class="nav-link" href="{{route('website.products.index')}}">{{__('menu.menu')}}</a> </li>
 
                                 <li style="display:none;">
-                                    <a class="nav-link" href="{{route("website.contact")}}">Contact</a>
+                                    <a class="nav-link" href="{{route("website.contact")}}">{{__('menu.contact')}}</a>
                                 </li>
 
-                                <li class="dropdown" style="display:none;">
-                                    <a class="nav-link">Languages</a>
+                                <li class="dropdown" >
+                                    <a class="nav-link">{{__('menu.language')}}</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">Arabic</a></li>
+                                        <li><a href="{{ route('changeLang').'?lang=en' }}">{{__('menu.english')}}</a></li>
+                                        <li><a href="{{ route('changeLang').'?lang=ar' }}">{{__('menu.arabic')}}</a></li>
                                     </ul>
                                 </li>
                             </ul>

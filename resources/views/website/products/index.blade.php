@@ -8,10 +8,10 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="page_title">
-                        <h1 style="color: #ff8e28;">Romana Juices</h1>
+                        <h1 style="color: #ff8e28;">{{__('menu.shop-title')}}</h1>
                         <ul class="breadcrumb_nav ul_li">
-                            <li  ><a style="color: #ff8e28;" href="/">Home</a></li>
-                            <li>Online Menu</li>
+                            <li  ><a style="color: #ff8e28;" href="/">{{__('menu.home')}}</a></li>
+                            <li>{{__('menu.menu')}}</li>
                         </ul>
                     </div>
                 </div>
