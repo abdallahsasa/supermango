@@ -16,7 +16,7 @@
                                 <li><a class="nav-link" href="{{route('website.products.index')}}">{{__('menu.menu')}}</a> </li>
 
                                 <li>
-                                    <a class="nav-link" href="{{route("website.contact")}}">{__('menu.contact')}}</a>
+                                    <a class="nav-link" href="{{route("website.contact")}}">{{__('menu.contact')}}</a>
                                 </li>
 
                                 <li class="dropdown" >
