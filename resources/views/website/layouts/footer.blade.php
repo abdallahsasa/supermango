@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="social_links text-lg-end">
-                            <a href="https://www.instagram.com/romanakw/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/supermango_kw/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
