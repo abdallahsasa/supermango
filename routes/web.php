@@ -3,6 +3,7 @@
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\ContactUs\ContactUsController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\WebsiteProfile\WebsiteProfileController;
 use Illuminate\Support\Facades\Route;
@@ -75,14 +76,17 @@ Route::group(['prefix' => 'backoffice','middleware' => ['auth', 'verified']], fu
 
 });
 //FrontEnd Routes
-Route::get('/', [FrontendController::class, 'index'])->name('home.product.index');
-Route::get('/menu', [FrontendController::class, 'menu'])->name('home.product.menu');
-Route::get('/menu/{categoryfilter}', [FrontendController::class, 'filtermenu'])->name('home.product.filtermenu');
+Route::get('/', [FrontendController::class, 'index'])->name('website.home');
+Route::get('/menu', [FrontendController::class, 'menu'])->name('website.products.index');
+Route::get('/menu/{categoryfilter}', [FrontendController::class, 'filtermenu'])->name('website.products.filtermenu');
 
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('home.product.show');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('website.products.details');
 
 //------------- ContactUs -------------
-Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
+Route::get('/contact', [ContactUsController::class, 'create'])->name('website.contact');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 //------------- End ContactUs -------------
 
+
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+Route::any('{query}', function() { return redirect('/'); })->where('query', '.*');

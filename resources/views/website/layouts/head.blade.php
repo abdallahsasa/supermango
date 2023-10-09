@@ -4,7 +4,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Romana Juices| عصائر رمانة</title>
+    <title>Supermango Juices| عصائر سوبر مانغو</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('website/img/Logo.png')}}">
 
     <!-- css include -->

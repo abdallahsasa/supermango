@@ -2,7 +2,7 @@
 <footer>
     <div class="container">
         <div class="sb-footer-frame">
-            <div class="sb-copy">Copyright juice world &copy; 2023. All Rights Reserved.</div>
+            <div class="sb-copy">Copyright More&More &copy; 2023. All Rights Reserved.</div>
             <ul class="sb-social">
                 <li><a href="#."><i class="fab fa-facebook"></i></a></li>
                 <li><a href="https://www.instagram.com/moreandmore_kw/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -54,7 +54,10 @@
                     scrollTop: $("#main").offset().top-200},
                 'slow');
         });
-
+        var url = "{{ route('changeLang') }}";
+        $(".changeLang").change(function(){
+            window.location.href = url + "?lang="+ $(this).val();
+        });
         @if(isset($categoryfilter) && $categoryfilter != "ALL")
 
         $(document).ready(function() {
@@ -64,4 +67,5 @@
         });
         @endif
     </script>
+
 </footer>

@@ -8,12 +8,15 @@
                     <!-- main title -->
                     <div class="sb-main-title-frame">
                         <div class="sb-main-title">
-                            <h1 class="sb-h2">More & More Juices</h1>
+                            <h1 class="sb-h2">{{ __('product.banner-title') }}</h1>
                             <ul class="sb-breadcrumbs">
-                                <li><a href="/">Home</a></li>
+                                <li><a class="text-uppercase" href="/">{{ __('menu.home') }}</a></li>
 
                                 <li>
-                                    <div>{{$product->name}}</div>
+                                    <div class="text-uppercase"> {{$product->category->name}} </div>
+                                </li>
+                                <li>
+                                    <div class="text-uppercase"> {{$product->name}} </div>
                                 </li>
                             </ul>
                         </div>
@@ -49,16 +52,18 @@
                             <div class="sb-price">
                                 @foreach($product->prices as $price)
                                     @if($price->size=='Regular')
-                                    {{$price->price}}
+                                        {{number_format($price->price,3)}}
                                         @break
                                     @else
-                                        {{$price->price}}
-                                    @break
+                                        {{number_format($price->price,3)}}
+                                        @break
                                     @endif
                                 @endforeach
                                     <sub>{{$product->currency}}</sub>
                             </div>
+
                         </div>
+                        <div class="sb-text sb-mb-30">{{$product->category->name}}</div>
                         <ul class="sb-stars sb-mb-25">
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="fas fa-star"></i></li>
@@ -104,7 +109,7 @@
                                     <ul class="sb-list">
                                         @foreach($product->prices as $prod)
                                             <li>
-                                                <b>{{$prod->size}}</b><span>{{$prod->price}} {{$product->currency}}</span>
+                                                <b class="text-capitalize"><i class="fa-solid fa-cup-togo"></i>{{ __('product.'.str_replace(' ', '', $prod->size)) }}</b><span>{{number_format($prod->price,3)}}   {{$product->currency}}</span>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -121,7 +126,7 @@
         <div class="container">
             <div class="sb-group-title sb-mb-30">
                 <div class="sb-left sb-mb-30">
-                    <h2 class="sb-cate-title sb-mb-30">Need a new flavor adventure? Try these!</h2>
+                    <h2 class="sb-cate-title sb-mb-30">{{ __('product.related-products') }}</h2>
                 </div>
                 @if(count($relatedProducts)>4)
                     <div class="sb-right sb-mb-30">
@@ -150,8 +155,19 @@
                                     <h4 class="sb-card-title"><a href="{{route('home.product.show',$rproduct->id)}}">{{$rproduct->name}}</a>
                                     </h4>
                                     <div class="sb-price">
-                                        <sub>{{$rproduct->currency}}</sub> {{$rproduct->prices[0]['price']}}</div>
+                                        <sub>{{$rproduct->currency}}</sub>
+                                        @foreach($rproduct->prices as $rprice)
+                                            @if($rprice->size=='Regular')
+                                                {{number_format($price->price,3)}}
+                                                @break
+                                            @else
+                                                {{number_format($price->price,3)}}
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     @endforeach

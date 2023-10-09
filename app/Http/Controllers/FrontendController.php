@@ -68,6 +68,13 @@ class FrontendController extends Controller
         $categories = Category::where('status', '=', 'active')->get();
         return view($this->menu_view, compact(['products', 'categories', 'filter','categoryfilter']));
     }
+
+
+    public function contactUs()
+    {
+
+        return view ('website.contact');
+    }
     /**
      * Display Coming Soon Page.
      *

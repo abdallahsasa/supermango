@@ -4,8 +4,8 @@
         <div class="container">
             <div class="sb-group-title sb-mb-30">
                 <div class="sb-left sb-mb-30">
-                    <h2 class="sb-mb-30">What do you <span>like today?</span></h2>
-                    <p class="sb-text">Discover Our Categories</p>
+                    <h2 class="sb-mb-30">{{ __('home.category-headingp1') }} <span>{{ __('home.category-headingp2') }}</span></h2>
+                    <p class="sb-text">{{ __('home.category-subheading') }}</p>
                 </div>
                 <div class="sb-right sb-mb-30">
                     <!-- button -->
@@ -13,7 +13,7 @@
                 <span class="sb-icon">
                   <img src="img/ui/icons/menu.svg" alt="icon">
                 </span>
-                        <span>View Full Menu</span>
+                        <span>{{ __('home.view-full-menu') }}</span>
                     </a>
                     <!-- button end -->
                 </div>
@@ -44,7 +44,7 @@
                 <div class="container">
                     <div class="sb-group-title sb-mb-30">
                         <div class="sb-left sb-mb-30">
-                            <h2 class="sb-mb-30">Most <span>popular</span></h2>
+                            <h2 class="sb-mb-30">{{ __('home.most') }} <span>{{ __('home.popular') }}</span></h2>
                         </div>
                         <div class="sb-right sb-mb-30">
                             <!-- slider navigation -->
@@ -58,7 +58,7 @@
                 <span class="sb-icon">
                   <img src="img/ui/icons/menu.svg" alt="icon">
                 </span>
-                                <span>Full menu</span>
+                                <span>{{ __('home.full-menu') }}</span>
                             </a>
                             <!-- button end -->
                         </div>
@@ -68,7 +68,7 @@
                             @if(isset($products))
                                 @foreach($products as $product)
                             <div class="swiper-slide swiper-slide-active" style="width: 330px; margin-right: 30px;">
-                                <a data-fancybox="menu" data-no-swup="" href="{{$product->image_url}}" class="sb-menu-item">
+                                <a  href="/product/{{$product->id}}" class="sb-menu-item">
                                     <div class="sb-cover-frame">
                                         <img src="{{$product->image_url}}" alt="product">
                                     </div>
@@ -77,25 +77,23 @@
                                         <div class="sb-price">
                                             @foreach($product->prices as $price)
                                                 @if($price->size=='Regular')
-                                                    {{$price->price}}
+                                                    {{number_format($price->price,3)}}
                                                     @break
                                                 @else
-                                                    {{$price->price}}
-                                                    @break
+                                                    {{number_format($price->price,3)}}                                                    @break
                                                 @endif
                                             @endforeach
                                             <sub>{{$product->currency}}</sub>
                                         </div>
+                                        <div>
+
+                                        </div>
                                     </div>
                                     <div class="sb-description">
+
                                     </div>
                                 </a>
-                                <a style="width: 100%;justify-content: center;" href="/product/{{$product->id}}"
-                                   class="sb-btn sb-ppc">
-                      <span class="sb-icon">
-                        <img src="img/ui/icons/search.svg" alt="icon">
-                      </span><span>View sizes</span></a>
-                                </a>
+
                             </div>
                                 @endforeach
                             @endif
